@@ -3,7 +3,7 @@ import Meme from "../Meme/Meme";
 import "./content.css";
 import axios from "axios";
 
-export default function Content() {
+export default function Content(props) {
   const [meme, setMeme] = useState([]);
   //For testing purpose
   /*   const test = [
@@ -48,18 +48,20 @@ export default function Content() {
   useEffect(() => {
     fetchData();
   }, []);
-
-  return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      {/*maps the array of objects fetched from the backend
-      and creates a Meme component for each object*/}
-      {meme.map(({ id, picurl, description }) => {
-        return (
-          <div key={id} className="meme">
-            <Meme imageUrl={picurl} name={description} />
-          </div>
-        );
-      })}
-    </div>
-  );
+  if (props.isLoggedIn) {
+    return (
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        {/*maps the array of objects fetched from the backend
+        and creates a Meme component for each object*/}
+        {meme.map(({ id, picurl, description }) => {
+          return (
+            <div key={id} className="meme">
+              <Meme imageUrl={picurl} name={description} />
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+  return <h1>You must log in to ses content</h1>;
 }
