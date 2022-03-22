@@ -1,3 +1,24 @@
 .header {
-  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  grid-template-areas:
+    ". . . ."
+    "s s s s";
+  grid-template-columns: min-content min-content auto min-content;
+
+  height: 60px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  border-bottom-style: solid;
+  border-color: rgb(197, 197, 197);
+}
+
+.header .logo {
+  color: rgb(131, 131, 131);
+  font-weight: 500;
+  font-size: 30px;
+  justify-self: left;
 }

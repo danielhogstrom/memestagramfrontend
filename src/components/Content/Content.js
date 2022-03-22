@@ -9,22 +9,27 @@ export default function Content() {
     {
       id: 1,
       meme: "https://blog.yellowoctopus.com.au/wp-content/uploads/2018/03/yellow-octopus-funny-memes-1.png",
+      name: "Amanda",
     },
     {
       id: 2,
       meme: "https://blog.yellowoctopus.com.au/wp-content/uploads/2018/03/yellow-octopus-funny-memes-12.jpg",
+      name: "Christopher",
     },
     {
       id: 3,
       meme: "https://blog.yellowoctopus.com.au/wp-content/uploads/2018/03/yellow-octopus-funny-memes-68.jpg",
+      name: "Ante",
     },
     {
       id: 4,
       meme: "https://blog.yellowoctopus.com.au/wp-content/uploads/2018/03/yellow-octopus-funny-memes-12.jpg",
+      name: "Samuel",
     },
     {
       id: 5,
       meme: "https://blog.yellowoctopus.com.au/wp-content/uploads/2018/03/yellow-octopus-funny-memes-12.jpg",
+      name: "Andreas",
     },
   ];
   useEffect(() => {
@@ -32,15 +37,13 @@ export default function Content() {
   }, []);
 
   return (
-    <div className="content">
+    <div>
       {/*maps the array of objects fetched from the backend
       and creates a Meme component for each object*/}
-      {meme.map(({ id, meme }) => {
+      {meme.map(({ id, meme, name }) => {
         return (
-          <div className="memeframe" key={id}>
-            <div className="memeimage">
-              <Meme imageUrl={meme} />
-            </div>
+          <div key={id} className="meme">
+            <Meme imageUrl={meme} name={name} />
           </div>
         );
       })}
