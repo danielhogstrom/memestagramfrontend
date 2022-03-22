@@ -5,35 +5,8 @@ import axios from "axios";
 
 export default function Content(props) {
   const [meme, setMeme] = useState([]);
-  //For testing purpose
-  /*   const test = [
-    {
-      id: 1,
-      meme: "https://blog.yellowoctopus.com.au/wp-content/uploads/2018/03/yellow-octopus-funny-memes-1.png",
-      name: "Amanda",
-    },
-    {
-      id: 2,
-      meme: "https://blog.yellowoctopus.com.au/wp-content/uploads/2018/03/yellow-octopus-funny-memes-12.jpg",
-      name: "Christopher",
-    },
-    {
-      id: 3,
-      meme: "https://blog.yellowoctopus.com.au/wp-content/uploads/2018/03/yellow-octopus-funny-memes-68.jpg",
-      name: "Ante",
-    },
-    {
-      id: 4,
-      meme: "https://blog.yellowoctopus.com.au/wp-content/uploads/2018/03/yellow-octopus-funny-memes-12.jpg",
-      name: "Samuel",
-    },
-    {
-      id: 5,
-      meme: "https://blog.yellowoctopus.com.au/wp-content/uploads/2018/03/yellow-octopus-funny-memes-12.jpg",
-      name: "Andreas",
-    },
-  ]; */
 
+  //Uses axios to fetch data from backend and then setMeme to received array
   const fetchData = () => {
     axios
       .get("http://localhost:8080/api/addmeme")
@@ -44,10 +17,11 @@ export default function Content(props) {
         console.log(error);
       });
   };
-
+  //When component is mounted the fetchdata function is run once
   useEffect(() => {
     fetchData();
   }, []);
+
   if (props.isLoggedIn) {
     return (
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -63,5 +37,5 @@ export default function Content(props) {
       </div>
     );
   }
-  return <h1>You must log in to ses content</h1>;
+  return <h1>You must log in to see content</h1>;
 }

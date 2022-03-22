@@ -1,4 +1,5 @@
 import "./header.css";
+import { Link } from "react-router-dom";
 import homebutton from "./icons/home-button.png";
 import uploadbutton from "./icons/upload-button.png";
 import profile from "./icons/round-account-button-with-user-inside.png";
@@ -6,7 +7,7 @@ import profile from "./icons/round-account-button-with-user-inside.png";
 export default function Header() {
   return (
     <div className="header">
-      <div className="logo">MEMESTAGRAM</div>
+      <h1 className="logo">MEMESTAGRAM</h1>
       <div className="home">
         <img src={homebutton} />
       </div>
@@ -14,7 +15,9 @@ export default function Header() {
         <img src={uploadbutton} />
       </div>
       <div className="profile">
-        <img src={profile} />
+        {/*    <Link to="/Login">
+          <img src={profile} />
+        </Link> */}
       </div>
     </div>
   );

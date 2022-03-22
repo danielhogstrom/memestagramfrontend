@@ -12,7 +12,7 @@ export default function Meme(props) {
       }}
     >
       <p>{props.name}</p>
-      <img src={props.imageUrl} />
+      <img src={props.imageUrl} alt={props.name} />
     </div>
   );
 }
