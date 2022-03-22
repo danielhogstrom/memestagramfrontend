@@ -14,10 +14,8 @@ export default function Header() {
       <div className="upload">
         <img src={uploadbutton} />
       </div>
-      <div className="profile">
-        {/*    <Link to="/Login">
-          <img src={profile} />
-        </Link> */}
+      <div className="profile">        
+          <img src={profile} />        
       </div>
     </div>
   );

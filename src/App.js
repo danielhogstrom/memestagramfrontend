@@ -8,9 +8,9 @@ import Login from "./components/Login/Login";
 function App() {
   return (
     <div className="App">
-      {/*  <Header />
+      <Header />
       <Content isLoggedIn={true} />
-      <Footer /> */}
+      <Footer />
       <Login />
     </div>
   );
