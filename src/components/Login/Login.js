@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import "./styles.css";
 
@@ -6,18 +7,8 @@ export default function App() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // User Login info
-  const database = [
-    {
-      username: "user1",
-      password: "pass1",
-    },
-    {
-      username: "user2",
-      password: "pass2",
-    },
-  ];
+  const [user, setUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const errors = {
     uname: "invalid username",
@@ -28,23 +19,21 @@ export default function App() {
     //Prevent page reload
     event.preventDefault();
 
-    var { uname, pass } = document.forms[0];
-
-    // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
-
-    // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
-    }
+    //Create JSON object
+    const user = {
+      username: event.target[0].value,
+      password: event.target[1].value,
+    };
+    setUser(user);
+    axios
+      .post("http://localhost:8080/validate", user)
+      .then(function (response) {
+        setLoggedIn(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    console.log(loggedIn);
   };
 
   // Generate JSX code for error message
@@ -59,12 +48,12 @@ export default function App() {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Username </label>
-          <input type="text" name="uname" required />
+          <input type="text" name="username" required />
           {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
           <label>Password </label>
-          <input type="password" name="pass" required />
+          <input type="password" name="password" required />
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
@@ -78,7 +67,7 @@ export default function App() {
     <div className="app">
       <div className="login-form">
         <div className="title">Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+        {loggedIn ? <div>User is successfully logged in</div> : renderForm}
       </div>
     </div>
   );
