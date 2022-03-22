@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-
 import "./styles.css";
+import Header from "../Header/Header";
+import Content from "../Content/Content";
+import Footer from "../Footer/Footer";
 
 export default function App() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -33,7 +34,6 @@ export default function App() {
       .catch(function (error) {
         console.log(error);
       });
-    console.log(loggedIn);
   };
 
   // Generate JSX code for error message
@@ -67,7 +67,15 @@ export default function App() {
     <div className="app">
       <div className="login-form">
         <div className="title">Sign In</div>
-        {loggedIn ? <div>User is successfully logged in</div> : renderForm}
+        {loggedIn ? (
+          <div>
+            <Header user={user} />
+            <Content isLoggedIn={loggedIn} />
+            <Footer />
+          </div>
+        ) : (
+          renderForm
+        )}
       </div>
     </div>
   );
