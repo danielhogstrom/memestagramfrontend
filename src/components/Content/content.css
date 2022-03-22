@@ -3,6 +3,10 @@
   grid-template-columns: 200px;
   grid-row-gap: 10px;
   justify-content: center;
+  padding-left: 100px;
+  background-color: lightgrey;
+  
+  
 }
 
 .image {
@@ -16,6 +20,24 @@
     grid-row-gap: 10px;
   }
   .image {
-    max-width: 400px;
+    max-width: 390px;
+    justify-content: center;
   }
+}
+
+.memeframe {
+  border: 1px rgb(49, 49, 49) solid;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 100%;
+  background-color: rgb(112, 112, 112);
+  filter: drop-shadow(16px 16px 10px rgb(112, 109, 109));
+  margin-bottom: 35px;
+  width: 400px;
+}
+
+.memeimage {
+  border: 1px rgb(117, 117, 117) solid;
+  background-color: rgb(151, 151, 151);
+  
 }

@@ -37,8 +37,10 @@ export default function Content() {
       and creates a Meme component for each object*/}
       {meme.map(({ id, meme }) => {
         return (
-          <div key={id}>
-            <Meme imageUrl={meme} />
+          <div className="memeframe" key={id}>
+            <div className="memeimage">
+              <Meme imageUrl={meme} />
+            </div>
           </div>
         );
       })}
