@@ -24,13 +24,13 @@ export default function Content(props) {
 
   if (props.isLoggedIn) {
     return (
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "inline-grid", justifyContent: "center" }}>
         {/*maps the array of objects fetched from the backend
         and creates a Meme component for each object*/}
-        {meme.map(({ id, picurl, description }) => {
+        {meme.map(({ id, picurl, description, submitter, profilepic }) => {
           return (
             <div key={id} className="meme">
-              <Meme imageUrl={picurl} name={description} />
+              <Meme imageUrl={picurl} name={description} submitter={submitter} profilepic={profilepic} />
             </div>
           );
         })}
