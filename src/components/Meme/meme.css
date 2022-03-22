@@ -1,12 +1,54 @@
 img {
+  padding-top: 0px;
   width: 100%;
   height: auto;
+  border-style: hidden;
+  border-radius: 10px;
 }
 
 p {
-  font-size: 20px;
+  font-size: 30px;
   text-transform: lowercase;
-  margin: 0 10px;
   padding: 5px;
   border-top: 1px solid rgba(189, 192, 195, 0.5);
+}
+
+.sub {
+  grid-area: sub;    
+  font-size: 18px;
+  margin-top: 14px;
+  margin-left: 10px;
+  color: darkslategrey;  
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  
+}
+
+.profilepic {
+  grid-area: profilepic;
+  border-radius: 50%;
+  max-height: 50px;
+  max-width: 50px; 
+  border-style: solid;
+  border-color: cadetblue;
+  
+}
+
+.score {
+  grid-area: score;
+  margin-top: 10px;
+  margin-right: 30px;
+  font-style: oblique;
+  font-weight: 600;
+  font-size: 25px;
+    
+}
+
+.gridcontainer {
+  display: grid;
+  grid-template: 
+            'profilepic sub score';
+            justify-content:space-between;
+            padding-bottom: 10px;
+
 }
