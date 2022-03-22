@@ -33,6 +33,7 @@ export default function Content() {
       name: "Andreas",
     },
   ]; */
+
   const fetchData = () => {
     axios
       .get("http://localhost:8080/api/addmeme")
@@ -49,7 +50,7 @@ export default function Content() {
   }, []);
 
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       {/*maps the array of objects fetched from the backend
       and creates a Meme component for each object*/}
       {meme.map(({ id, picurl, description }) => {

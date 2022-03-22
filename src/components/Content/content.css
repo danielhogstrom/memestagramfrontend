@@ -12,3 +12,7 @@
   justify-content: center;
   margin-bottom: 10px;
 }
+
+div .meme {
+  max-width: 600px;
+}
