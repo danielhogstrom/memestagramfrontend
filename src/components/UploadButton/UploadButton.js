@@ -1,29 +1,53 @@
-import React, { Component } from "react";
-import { DropzoneArea } from "material-ui-dropzone";
-import axios from "axios";
+import React, { useState } from "react";
+import AWS from "aws-sdk";
 
-export default class UploadButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      files: [],
+const S3_BUCKET = "memestagram";
+const REGION = "eu-north-1";
+
+AWS.config.update({
+  accessKeyId: "AKIA3WEOS4RPZHNOEYUK ",
+  secretAccessKey: "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",
+});
+
+const myBucket = new AWS.S3({
+  params: { Bucket: S3_BUCKET },
+  region: REGION,
+});
+
+const UploadImageToS3WithNativeSdk = () => {
+  const [progress, setProgress] = useState(0);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileInput = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const uploadFile = (file) => {
+    console.log(file);
+    const params = {
+      ACL: "public-read",
+      Body: file,
+      Bucket: S3_BUCKET,
+      Key: file.name,
     };
-  }
-  handleChange(files) {
-    console.log(files);
-    this.setState({
-      files: files,
-    });
-    let formData = new FormData();
-    formData.append("image", files);
-    axios.post("http://localhost:8080/api/user/images", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-  }
 
-  render() {
-    return <DropzoneArea onChange={this.handleChange.bind(this)} />;
-  }
-}
+    myBucket
+      .putObject(params)
+      .on("httpUploadProgress", (evt) => {
+        setProgress(Math.round((evt.loaded / evt.total) * 100));
+      })
+      .send((err) => {
+        if (err) console.log(err);
+      });
+  };
+
+  return (
+    <div>
+      <div>Native SDK File Upload Progress is {progress}%</div>
+      <input type="file" onChange={handleFileInput} />
+      <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
+    </div>
+  );
+};
+
+export default UploadImageToS3WithNativeSdk;

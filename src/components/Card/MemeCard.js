@@ -38,7 +38,7 @@ export default function MemeCard(props) {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="meme">
-            {/* R */}
+            {props.meme.memeCreatedByUser.charAt(0)}
           </Avatar>
         }
         action={
@@ -46,7 +46,7 @@ export default function MemeCard(props) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={props.meme.description}
+        title={props.meme.memeCreatedByUser}
         subheader=""
       />
       <CardMedia
@@ -65,24 +65,7 @@ export default function MemeCard(props) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph></Typography>
-          <Typography paragraph></Typography>
-          <Typography paragraph></Typography>
-          <Typography></Typography>
-        </CardContent>
-      </Collapse>
     </Card>
   );
 }

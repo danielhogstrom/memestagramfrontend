@@ -6,7 +6,7 @@ export default function App() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [user, setUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const errors = {
     uname: "invalid username",
@@ -23,7 +23,7 @@ export default function App() {
     };
     setUser(user);
     axios
-      .post("http://localhost:8080/validate", user)
+      .post("http://localhost:8080/api/user/validate", user)
       .then(function (response) {
         setLoggedIn(response.data);
       })
