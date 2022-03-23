@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./styles.css";
-import Header from "../Header/Header";
-import Content from "../Content/Content";
-import Footer from "../Footer/Footer";
+import BasicGrid from "../Grid/BasicGrid";
 
 export default function App() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [user, setUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   const errors = {
     uname: "invalid username",
@@ -19,7 +16,6 @@ export default function App() {
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
-
     //Create JSON object
     const user = {
       username: event.target[0].value,
@@ -69,9 +65,7 @@ export default function App() {
         <div className="title">Sign In</div>
         {loggedIn ? (
           <div>
-            <Header user={user} />
-            <Content isLoggedIn={loggedIn} />
-            <Footer />
+            <BasicGrid />
           </div>
         ) : (
           renderForm
