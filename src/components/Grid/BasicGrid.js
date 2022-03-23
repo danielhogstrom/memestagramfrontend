@@ -39,7 +39,7 @@ export default function BasicGrid() {
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1,}}>
+    <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
         <Grid
           item
@@ -57,7 +57,11 @@ export default function BasicGrid() {
                 item
                 sm={6}
                 md={4}
-                style={{ display: "flex", justifyContent: "center", height: "100%"}}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  height: "100%",
+                }}
               >
                 <MemeCard meme={meme} />
               </Grid>
