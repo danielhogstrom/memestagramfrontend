@@ -40,15 +40,20 @@ export default function BasicGrid() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={1}>
-        <Grid
-          item
-          sm={12}
-          style={{ display: "flex", justifyContent: "center" }}
-        >
+      <Grid
+        container
+        spacing={1}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Grid item sm={12}>
           <Header />
           <UploadButton />
         </Grid>
+        <Grid item sm={6}></Grid>
         {memes.map((meme) => {
           return (
             <>

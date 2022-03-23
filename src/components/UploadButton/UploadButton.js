@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import AWS from "aws-sdk";
+import "./uploadbutton.css";
 
 const S3_BUCKET = "memestagram";
 const REGION = "eu-north-1";
 
-AWS.config.update({
-
-});
+AWS.config.update({});
 
 const myBucket = new AWS.S3({
   params: { Bucket: S3_BUCKET },
@@ -19,6 +18,7 @@ const UploadImageToS3WithNativeSdk = () => {
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
+    uploadFile(selectedFile);
   };
 
   const uploadFile = (file) => {
@@ -41,10 +41,26 @@ const UploadImageToS3WithNativeSdk = () => {
   };
 
   return (
-    <div>
-      <div>Native SDK File Upload Progress is {progress}%</div>
-      <input type="file" onChange={handleFileInput} />
-      <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
+    //Todo description
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <label class="file">
+        <input
+          type="file"
+          className="custom-file-input"
+          id="file"
+          aria-label="File browser example"
+          accept="image/*"
+          onChange={handleFileInput}
+        />
+        <span class="file-custom"></span>
+      </label>
     </div>
   );
 };

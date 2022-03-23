@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
+import UploadButton from "../UploadButton/UploadButton";
 
 export default function MenuPopupState() {
   return (
@@ -14,7 +15,9 @@ export default function MenuPopupState() {
           </Button>
           <Menu {...bindMenu(popupState)}>
             <MenuItem onClick={popupState.close}>Profile</MenuItem>
-            <MenuItem onClick={popupState.close}>Upload</MenuItem>
+            <MenuItem onClick={popupState.close}>
+              <UploadButton />
+            </MenuItem>
             <MenuItem onClick={popupState.close}>Logout</MenuItem>
           </Menu>
         </React.Fragment>
