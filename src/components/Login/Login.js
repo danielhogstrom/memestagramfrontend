@@ -62,7 +62,6 @@ export default function App() {
   return (
     <div className="app">
       <div className="login-form">
-        <div className="title">Sign In</div>
         {loggedIn ? (
           <div>
             <BasicGrid />

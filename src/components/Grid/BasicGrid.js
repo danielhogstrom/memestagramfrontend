@@ -5,8 +5,10 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import MemeCard from "../Card/MemeCard";
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import UploadButton from "../UploadButton/UploadButton";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -22,7 +24,7 @@ export default function BasicGrid() {
   //Uses axios to fetch data from backend and then setMeme to received array
   const fetchData = () => {
     axios
-      .get("http://localhost:8080/api/addmeme")
+      .get("http://localhost:8080/api/meme/all")
       .then((result) => {
         setMemes(result.data);
       })
@@ -38,17 +40,34 @@ export default function BasicGrid() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
+        <Grid
+          item
+          sm={12}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <Header />
+          <UploadButton />
+        </Grid>
         {memes.map((meme) => {
           return (
             <>
-              <Grid item sm={6} md={4}>
+              <Grid
+                item
+                sm={6}
+                md={4}
+                style={{ display: "flex", justifyContent: "center" }}
+              >
                 <MemeCard meme={meme} />
               </Grid>
             </>
           );
         })}
-        <Grid>
+        <Grid
+          item
+          sm={12}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
           <Footer />
         </Grid>
       </Grid>
