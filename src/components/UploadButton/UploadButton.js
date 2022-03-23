@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { DropzoneArea } from "material-ui-dropzone";
 import axios from "axios";
+import "./Uploadbutton.css";
+
 
 export default class UploadButton extends Component {
   constructor(props) {
@@ -23,7 +25,8 @@ export default class UploadButton extends Component {
     });
   }
 
-  render() {
+  render() {    
     return <DropzoneArea onChange={this.handleChange.bind(this)} />;
+    
   }
 }

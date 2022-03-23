@@ -3,7 +3,10 @@ import Login from "./components/Login/Login";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App"
+      style={{
+        backgroundColor: '#4a4a4a' 
+      }}>
       <Login />
     </div>
   );
