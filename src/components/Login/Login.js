@@ -24,7 +24,10 @@ export default function App() {
       password: event.target[2].value,
     };
     setUser(user);
-    axios
+    const instanceOfAxios = axios.create({
+      withCredentials: true,
+    });
+    instanceOfAxios
       .post("http://localhost:8080/api/user/validate", user)
       .then(function (response) {
         setLoggedIn(response.data);

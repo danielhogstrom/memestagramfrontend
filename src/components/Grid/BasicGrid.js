@@ -21,11 +21,27 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function BasicGrid(props) {
   const [memes, setMemes] = useState([]);
   const [update, setUpdate] = useState(false);
+  const [user, setUser] = useState({});
 
-  //Uses axios to fetch data from backend and then setMeme to received array
-  const fetchData = () => {
+  const fetchUser = () => {
     axios
-      .get("http://localhost:8080/api/meme/all")
+      .get(`http://localhost:8080/api/user/${props.user}`, {
+        withCredentials: true,
+      })
+      .then((result) => {
+        console.log(result);
+        setUser(result.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  //Uses axios to fetch data from backend and then setMeme to received array
+  const fetchMeme = () => {
+    axios
+      .get("http://localhost:8080/api/meme/all", {
+        withCredentials: true,
+      })
       .then((result) => {
         setMemes(result.data);
       })
@@ -35,7 +51,8 @@ export default function BasicGrid(props) {
   };
   //When component is mounted the fetchdata function is run once
   useEffect(() => {
-    fetchData();
+    fetchUser();
+    fetchMeme();
   }, [update]);
 
   return (
@@ -70,7 +87,7 @@ export default function BasicGrid(props) {
                     width: "100%",
                   }}
                 >
-                  <MemeCard meme={meme} />
+                  <MemeCard meme={meme} user={user} />
                 </Grid>
               </>
             );
