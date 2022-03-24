@@ -1,4 +1,6 @@
 import Login from "./components/Login/Login";
+import SignUpContainer from "./components/SignUp/SignUpContainer"
+import CreateAccount from "./components/CreateAccount/CreateAccount"
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
         alignItems: "center",
       }}
     >
+      <CreateAccount />
       <Login />
     </div>
   );

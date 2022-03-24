@@ -23,7 +23,9 @@
     "react-scripts": "^5.0.0",
     "use-file-upload": "^1.0.11",
     "util": "^0.12.4",
-    "web-vitals": "^2.1.4"
+    "validator": "^13.7.0",
+    "web-vitals": "^2.1.4",
+    "zxcvbn": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
