@@ -20,6 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function BasicGrid(props) {
   const [memes, setMemes] = useState([]);
+  const [update, setUpdate] = useState(false);
 
   //Uses axios to fetch data from backend and then setMeme to received array
   const fetchData = () => {
@@ -35,7 +36,7 @@ export default function BasicGrid(props) {
   //When component is mounted the fetchdata function is run once
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [update]);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -49,28 +50,31 @@ export default function BasicGrid(props) {
         }}
       >
         <Grid item sm={12}>
-          <Header user={props.user} />
+          <Header user={props.user} setUpdate={setUpdate} update={update} />
         </Grid>
-        {memes.map((meme) => {
-          return (
-            <>
-              <Grid
-                key={meme.id}
-                item
-                sm={6}
-                md={4}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  height: "100%",
-                  width: "100%",
-                }}
-              >
-                <MemeCard meme={meme} />
-              </Grid>
-            </>
-          );
-        })}
+        {memes
+          .slice(0)
+          .reverse()
+          .map((meme) => {
+            return (
+              <>
+                <Grid
+                  key={meme.id}
+                  item
+                  sm={6}
+                  md={4}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    height: "100%",
+                    width: "100%",
+                  }}
+                >
+                  <MemeCard meme={meme} />
+                </Grid>
+              </>
+            );
+          })}
         <Grid
           item
           sm={12}

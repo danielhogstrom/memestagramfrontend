@@ -39,12 +39,21 @@ export default function App() {
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
-        <div className="input-container">
+        <div
+          className="input-container"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
           <TextField
             id="outlined-basic-username"
             label="Username"
             variant="outlined"
             name="username"
+            style={{ marginTop: "10px" }}
           />
         </div>
         <div className="input-container">
@@ -54,9 +63,10 @@ export default function App() {
             variant="outlined"
             type="password"
             name="password"
+            style={{ marginTop: "10px" }}
           />
         </div>
-        <Button variant="outlined" type="submit">
+        <Button variant="outlined" type="submit" style={{ marginTop: "10px" }}>
           Login
         </Button>
       </form>

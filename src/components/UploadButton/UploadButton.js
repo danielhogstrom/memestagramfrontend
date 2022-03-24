@@ -17,7 +17,6 @@ const myBucket = new AWS.S3({
 });
 
 const UploadImageToS3WithNativeSdk = (props) => {
-  console.log(props.user);
   const [progress, setProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
   const [memeObj, setMemeObj] = useState({});
@@ -47,6 +46,13 @@ const UploadImageToS3WithNativeSdk = (props) => {
         if (err) console.log(err);
       });
     sendMeme(memeObj);
+    //Rerender BasicGrid
+    props.setUpdate(() => {
+      if (props.update === true) {
+        return false;
+      }
+      return true;
+    });
   };
 
   const sendMeme = (meme) => {
@@ -63,18 +69,16 @@ const UploadImageToS3WithNativeSdk = (props) => {
         alignItems: "center",
       }}
     >
-      <label class="file">
-        <input
-          type="file"
-          className="custom-file-input"
-          id="file"
-          aria-label="File browser example"
-          accept="image/*"
-          onChange={handleFileInput}
-        />
-        <span class="file-custom"></span>
-        <button onClick={() => uploadFile(selectedFile)}>upload</button>
-      </label>
+      <input
+        type="file"
+        className="inputfile"
+        name="file"
+        id="file"
+        aria-label="File browser example"
+        accept="image/*"
+        onChange={handleFileInput}
+      />
+      <button onClick={() => uploadFile(selectedFile)}>upload</button>
     </div>
   );
 };

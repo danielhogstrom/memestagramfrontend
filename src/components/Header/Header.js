@@ -45,7 +45,11 @@ export default function ElevateAppBar(props) {
               Memestagram
             </Typography>
             <Typography component="div">
-              <UploadButton user={props.user} />
+              <UploadButton
+                user={props.user}
+                setUpdate={props.setUpdate}
+                update={props.update}
+              />
             </Typography>
           </Toolbar>
         </AppBar>

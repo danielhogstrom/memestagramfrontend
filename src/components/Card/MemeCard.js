@@ -42,7 +42,7 @@ export default function MemeCard(props) {
           </IconButton>
         }
         title={props.meme.memeCreatedByUser}
-        subheader={props.meme.description}
+        subheader=""
       />
       <CardMedia
         component="img"
@@ -52,7 +52,9 @@ export default function MemeCard(props) {
       />
 
       <CardContent>
-        <Typography variant="body2" color="text.secondary"></Typography>
+        <Typography variant="body2" color="text.secondary">
+          {props.meme.description}
+        </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
@@ -61,6 +63,7 @@ export default function MemeCard(props) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+        <Typography></Typography>
       </CardActions>
     </Card>
   );
