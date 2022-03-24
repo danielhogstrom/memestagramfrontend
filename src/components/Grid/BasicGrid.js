@@ -51,9 +51,7 @@ export default function BasicGrid() {
       >
         <Grid item sm={12}>
           <Header />
-          <UploadButton />
         </Grid>
-        <Grid item sm={6}></Grid>
         {memes.map((meme) => {
           return (
             <>
@@ -66,6 +64,7 @@ export default function BasicGrid() {
                   display: "flex",
                   justifyContent: "center",
                   height: "100%",
+                  width: "100%",
                 }}
               >
                 <MemeCard meme={meme} />
