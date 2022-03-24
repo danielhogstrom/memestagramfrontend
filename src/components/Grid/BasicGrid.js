@@ -18,7 +18,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function BasicGrid() {
+export default function BasicGrid(props) {
+  console.log(props.user);
   const [memes, setMemes] = useState([]);
 
   //Uses axios to fetch data from backend and then setMeme to received array
@@ -35,7 +36,6 @@ export default function BasicGrid() {
   //When component is mounted the fetchdata function is run once
   useEffect(() => {
     fetchData();
-    console.log(memes);
   }, []);
 
   return (
@@ -50,7 +50,7 @@ export default function BasicGrid() {
         }}
       >
         <Grid item sm={12}>
-          <Header />
+          <Header user={props.user} />
         </Grid>
         {memes.map((meme) => {
           return (

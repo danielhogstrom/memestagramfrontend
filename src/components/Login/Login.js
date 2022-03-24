@@ -68,7 +68,7 @@ export default function App() {
       <div className="login-form">
         {loggedIn ? (
           <div>
-            <BasicGrid />
+            <BasicGrid user={user.username} />
           </div>
         ) : (
           renderForm
