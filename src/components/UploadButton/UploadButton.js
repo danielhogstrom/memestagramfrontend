@@ -7,23 +7,23 @@ const S3_BUCKET = "memestagram";
 const REGION = "eu-north-1";
 
 AWS.config.update({
-  accessKeyId: "AKIA3WEOS4RPZHNOEYUK ",
+  accessKeyId: "AKIA3WEOS4RPZHNOEYUK",
   secretAccessKey: "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",
 });
-//https://memestagram.s3.amazonaws.com/{iff2.png}
+
 const myBucket = new AWS.S3({
   params: { Bucket: S3_BUCKET },
   region: REGION,
 });
 
 const UploadImageToS3WithNativeSdk = (props) => {
+  console.log(props.user);
   const [progress, setProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
   const [memeObj, setMemeObj] = useState({});
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
-    console.log(selectedFile);
     setMemeObj({
       picurl: `https://memestagram.s3.amazonaws.com/${e.target.files[0].name}`,
       description: "hej",

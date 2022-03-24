@@ -19,7 +19,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function BasicGrid(props) {
-  console.log(props.user);
   const [memes, setMemes] = useState([]);
 
   //Uses axios to fetch data from backend and then setMeme to received array
