@@ -63,8 +63,8 @@ export default function MemeCard(props) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon onClick={addLike} />
+        <IconButton aria-label="add to favorites" onClick={addLike}>
+          <FavoriteIcon />
         </IconButton>
       </CardActions>
     </Card>
