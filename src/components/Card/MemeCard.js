@@ -13,6 +13,9 @@ import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddReactionIcon from '@mui/icons-material/AddReaction';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -29,6 +32,9 @@ export default function MemeCard(props) {
   const [likes, setLikes] = useState(props.meme.likes);
   const [isLiked, setIsLiked] = useState();
   const [likedIcon, setIsLikedIcon] = useState()
+  const [isFollowed, setIsFollowed] = useState ();
+  const[followedIcon, setFollowedIcon] = useState ();
+
 
   const addLike = () => {
     if (isLiked) {
@@ -41,6 +47,16 @@ export default function MemeCard(props) {
     setIsLikedIcon({ color: "#ff6c4f" });    
   }}};
 
+  const followButton = () => {
+    if (isFollowed){
+      setIsFollowed (false);
+      setFollowedIcon({color:""})
+    } else {
+      setIsFollowed (true)
+      setFollowedIcon({color:"#ff6c4f"})
+    }
+  }
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -50,8 +66,8 @@ export default function MemeCard(props) {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
+          <IconButton aria-label="settings" onClick={followButton} style={followedIcon}>
+            <PersonAddIcon />
           </IconButton>
         }
         title={props.meme.memeCreatedByUser}
