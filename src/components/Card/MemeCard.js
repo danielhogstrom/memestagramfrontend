@@ -12,10 +12,8 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import AddReactionIcon from '@mui/icons-material/AddReaction';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-
-
+import AddReactionIcon from "@mui/icons-material/AddReaction";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,46 +29,52 @@ const ExpandMore = styled((props) => {
 export default function MemeCard(props) {
   const [likes, setLikes] = useState(props.meme.likes);
   const [isLiked, setIsLiked] = useState();
-  const [likedIcon, setIsLikedIcon] = useState()
-  const [isFollowed, setIsFollowed] = useState ();
-  const[followedIcon, setFollowedIcon] = useState ();
-
+  const [likedIcon, setIsLikedIcon] = useState();
+  const [isFollowed, setIsFollowed] = useState();
+  const [followedIcon, setFollowedIcon] = useState();
 
   const addLike = () => {
     if (isLiked) {
       setIsLiked(false);
-      setIsLikedIcon({ color: ""});
+      setIsLikedIcon({ color: "" });
       setLikes(likes - 1);
-    } else {    
-    setLikes(likes + 1); {
-    setIsLiked(true);
-    setIsLikedIcon({ color: "#ff6c4f" });    
-  }}};
+    } else {
+      setLikes(likes + 1);
+      {
+        setIsLiked(true);
+        setIsLikedIcon({ color: "#ff6c4f" });
+      }
+    }
+  };
 
   const followButton = () => {
-    if (isFollowed){
-      setIsFollowed (false);
-      setFollowedIcon({color:""})
+    if (isFollowed) {
+      setIsFollowed(false);
+      setFollowedIcon({ color: "" });
     } else {
-      setIsFollowed (true)
-      setFollowedIcon({color:"#ff6c4f"})
+      setIsFollowed(true);
+      setFollowedIcon({ color: "#ff6c4f" });
     }
-  }
+  };
 
   return (
     <Card sx={{ maxWidth: 345}}>
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="meme">
-        
-          </Avatar>
-        }
+        avatar={<Avatar sx={{ bgcolor: red[500] }} aria-label="meme"></Avatar>}
         action={
-          <IconButton aria-label="settings" onClick={followButton} style={followedIcon}>
+          <IconButton
+            aria-label="settings"
+            onClick={followButton}
+            style={followedIcon}
+          >
             <PersonAddIcon />
           </IconButton>
         }
-        title={props.meme.memeCreatedByUser}
+        title={
+          props.meme.creator === null
+            ? "no creator"
+            : props.meme.creator.username
+        }
         subheader=""
       />
       <CardMedia
@@ -81,19 +85,29 @@ export default function MemeCard(props) {
       />
 
       <CardContent>
-        <Typography variant="body2" color="text.secondary" style={{fontSize: "large"}}>
-          {props.meme.description}          
-          <span style={{
-            float: "right",
-            fontSize: "x-large",
-            color: "#ff6c4f",
-            }}>
-          {likes} 
-          </span>         
-        </Typography>    
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          style={{ fontSize: "large" }}
+        >
+          {props.meme.description}
+          <span
+            style={{
+              float: "right",
+              fontSize: "x-large",
+              color: "#ff6c4f",
+            }}
+          >
+            {likes}
+          </span>
+        </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={addLike} style={likedIcon}>
+        <IconButton
+          aria-label="add to favorites"
+          onClick={addLike}
+          style={likedIcon}
+        >
           <AddReactionIcon fontSize="large" />
         </IconButton>
       </CardActions>
