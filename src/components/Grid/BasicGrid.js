@@ -8,7 +8,6 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import UploadButton from "../UploadButton/UploadButton";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
