@@ -64,6 +64,7 @@ const UploadImageToS3WithNativeSdk = (props) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+       
       }}
     >
       <input
@@ -74,8 +75,11 @@ const UploadImageToS3WithNativeSdk = (props) => {
         aria-label="File browser example"
         accept="image/*"
         onChange={handleFileInput}
+        
       />
-      <button onClick={() => uploadFile(selectedFile)}>upload</button>
+      <button onClick={() => uploadFile(selectedFile)}style={{backgroundColor: "green"}} >upload</button>
+
+
     </div>
   );
 };

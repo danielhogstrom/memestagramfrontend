@@ -58,11 +58,11 @@ export default function MemeCard(props) {
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345}}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="meme">
-            {props.meme.memeCreatedByUser.charAt(0)}
+        
           </Avatar>
         }
         action={
