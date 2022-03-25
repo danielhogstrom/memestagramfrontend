@@ -11,6 +11,8 @@ const REGION = "eu-north-1";
 const myBucket = new AWS.S3({
   params: { Bucket: S3_BUCKET },
   region: REGION,
+  accessKeyId: "AKIA3WEOS4RPZHNOEYUK ",
+  secretAccessKey: "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",
 });
 
 const UploadImageToS3WithNativeSdk = (props) => {
