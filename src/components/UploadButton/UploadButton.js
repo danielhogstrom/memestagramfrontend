@@ -6,10 +6,7 @@ import axios from "axios";
 const S3_BUCKET = "memestagram";
 const REGION = "eu-north-1";
 
-AWS.config.update({
-  accessKeyId: "AKIA3WEOS4RPZHNOEYUK",
-  secretAccessKey: "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",
-});
+
 
 const myBucket = new AWS.S3({
   params: { Bucket: S3_BUCKET },
