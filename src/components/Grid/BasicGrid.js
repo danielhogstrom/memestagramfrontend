@@ -63,6 +63,7 @@ export default function BasicGrid(props) {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          
         }}
       >
         <Grid item sm={12}>
@@ -83,7 +84,7 @@ export default function BasicGrid(props) {
                     display: "flex",
                     justifyContent: "center",
                     height: "100%",
-                    width: "100%",
+                    width: "100%",                                        
                   }}
                 >
                   <MemeCard meme={meme} user={user} />

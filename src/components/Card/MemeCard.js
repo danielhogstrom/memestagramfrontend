@@ -12,7 +12,9 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import AddReactionIcon from '@mui/icons-material/AddReaction';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+
 
 
 const ExpandMore = styled((props) => {
@@ -29,13 +31,21 @@ const ExpandMore = styled((props) => {
 export default function MemeCard(props) {
   const [likes, setLikes] = useState(props.meme.likes);
   const [isLiked, setIsLiked] = useState();
+  const [likedIcon, setIsLikedIcon] = useState()
   const [isFollowed, setIsFollowed] = useState ();
   const[followedIcon, setFollowedIcon] = useState ();
 
+
   const addLike = () => {
-    if (isLiked) setLikes(likes + 1);
+    if (isLiked) {
+      setIsLiked(false);
+      setIsLikedIcon({ color: ""});
+      setLikes(likes - 1);
+    } else {    
+    setLikes(likes + 1); {
     setIsLiked(true);
-  };
+    setIsLikedIcon({ color: "#ff6c4f" });    
+  }}};
 
   const followButton = () => {
     if (isFollowed){
@@ -71,14 +81,20 @@ export default function MemeCard(props) {
       />
 
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {props.meme.description}
-          {likes}
-        </Typography>
+        <Typography variant="body2" color="text.secondary" style={{fontSize: "large"}}>
+          {props.meme.description}          
+          <span style={{
+            float: "right",
+            fontSize: "x-large",
+            color: "#ff6c4f",
+            }}>
+          {likes} 
+          </span>         
+        </Typography>    
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={addLike}>
-          <FavoriteIcon />
+        <IconButton aria-label="add to favorites" onClick={addLike} style={likedIcon}>
+          <AddReactionIcon fontSize="large" />
         </IconButton>
       </CardActions>
     </Card>
