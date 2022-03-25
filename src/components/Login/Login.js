@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./styles.css";
-import Header from "../Header/Header";
-import Content from "../Content/Content";
-import Footer from "../Footer/Footer";
+import TextField from "@mui/material/TextField";
+import BasicGrid from "../Grid/BasicGrid";
+import Button from "@mui/material/Button";
 
 export default function App() {
   // React States
-  const [errorMessages, setErrorMessages] = useState({});
   const [user, setUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState();
 
   const errors = {
     uname: "invalid username",
@@ -17,48 +15,63 @@ export default function App() {
   };
 
   const handleSubmit = (event) => {
+    console.log(event);
     //Prevent page reload
     event.preventDefault();
-
     //Create JSON object
     const user = {
       username: event.target[0].value,
-      password: event.target[1].value,
+      password: event.target[2].value,
     };
     setUser(user);
-    axios
-      .post("http://localhost:8080/validate", user)
+    const instanceOfAxios = axios.create({
+      withCredentials: true,
+    });
+    instanceOfAxios
+      .post("http://localhost:8080/api/user/validate", user)
       .then(function (response) {
         setLoggedIn(response.data);
+        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
       });
   };
 
-  // Generate JSX code for error message
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    );
-
   // JSX code for login form
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <label>Username </label>
-          <input type="text" name="username" required />
-          {renderErrorMessage("uname")}
+        <div
+          className="input-container"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <TextField
+            id="outlined-basic-username"
+            label="Username"
+            variant="outlined"
+            name="username"
+            style={{ marginTop: "10px" }}
+          />
         </div>
         <div className="input-container">
-          <label>Password </label>
-          <input type="password" name="password" required />
-          {renderErrorMessage("pass")}
+          <TextField
+            id="outlined-basic-password"
+            label="Password"
+            variant="outlined"
+            type="password"
+            name="password"
+            style={{ marginTop: "10px" }}
+          />
         </div>
-        <div className="button-container">
-          <input type="submit" />
-        </div>
+        <Button variant="outlined" type="submit" style={{ marginTop: "10px" }}>
+          Login
+        </Button>
       </form>
     </div>
   );
@@ -66,12 +79,9 @@ export default function App() {
   return (
     <div className="app">
       <div className="login-form">
-        <div className="title">Sign In</div>
         {loggedIn ? (
           <div>
-            <Header user={user} />
-            <Content isLoggedIn={loggedIn} />
-            <Footer />
+            <BasicGrid user={user.username} />
           </div>
         ) : (
           renderForm
