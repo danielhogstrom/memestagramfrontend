@@ -6,7 +6,10 @@ import axios from "axios";
 const S3_BUCKET = "memestagram";
 const REGION = "eu-north-1";
 
-
+AWS.config.update({
+  accessKeyId: "AKIA3WEOS4RPZHNOEYUK",
+  secretAccessKey: "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",
+});
 
 const myBucket = new AWS.S3({
   params: { Bucket: S3_BUCKET },
@@ -23,7 +26,6 @@ const UploadImageToS3WithNativeSdk = (props) => {
     setMemeObj({
       picurl: `https://memestagram.s3.amazonaws.com/${e.target.files[0].name}`,
       description: "hej",
-      memeCreatedByUser: props.user,
     });
   };
 
@@ -53,7 +55,8 @@ const UploadImageToS3WithNativeSdk = (props) => {
   };
 
   const sendMeme = (meme) => {
-    axios.post("http://localhost:8080/api/meme/add", meme);
+    console.log(props.user);
+    axios.post(`http://localhost:8080/api/meme/${props.user.id}/add`, meme);
   };
 
   return (

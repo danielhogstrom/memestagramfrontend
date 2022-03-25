@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 export default function App() {
   // React States
   const [user, setUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState();
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const errors = {
     uname: "invalid username",
@@ -15,7 +15,6 @@ export default function App() {
   };
 
   const handleSubmit = (event) => {
-    console.log(event);
     //Prevent page reload
     event.preventDefault();
     //Create JSON object
@@ -31,7 +30,6 @@ export default function App() {
       .post("http://localhost:8080/api/user/validate", user)
       .then(function (response) {
         setLoggedIn(response.data);
-        console.log(response);
       })
       .catch(function (error) {
         console.log(error);

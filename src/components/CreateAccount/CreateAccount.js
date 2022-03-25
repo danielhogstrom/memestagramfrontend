@@ -9,33 +9,28 @@ export default function App() {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState();
 
-
   const handleSubmit = (event) => {
-    console.log(event);
     //Prevent page reload
     event.preventDefault();
     //Create JSON object
     const user = {
       username: event.target[0].value,
       password: event.target[1].value,
-      email: event.target[2].value
+      email: event.target[2].value,
     };
     setUser(user);
     const instanceOfAxios = axios.create({
       withCredentials: true,
-    }); 
+    });
     instanceOfAxios
       .post("http://localhost:8080/api/user/add", user)
       .then(function (response) {
-        setLoggedIn(response.data); 
-        console.log(response);
+        setLoggedIn(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
   };
-
-
 
   const renderForm = (
     <div className="form">
@@ -74,9 +69,9 @@ export default function App() {
             label="Enter Email"
             variant="outlined"
             type="email"
-            name="email"            
-            style={{ marginTop: "10px" }}           
-          />          
+            name="email"
+            style={{ marginTop: "10px" }}
+          />
         </div>
         <div className="input-container">
           <TextField
@@ -96,7 +91,6 @@ export default function App() {
     </div>
   );
 
-
   return (
     <div className="app">
       <div className="login-form">
@@ -104,13 +98,10 @@ export default function App() {
           <div>
             <BasicGrid user={user.username} />
           </div>
-             ):(                                        
-          renderForm         
+        ) : (
+          renderForm
         )}
       </div>
     </div>
   );
 }
-
-
-
