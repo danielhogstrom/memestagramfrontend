@@ -71,7 +71,7 @@ export default function MemeCard(props) {
           </IconButton>
         }
         title={
-          props.meme.creator === null
+          props.meme.creator === null || props.meme.creator === undefined
             ? "no creator"
             : props.meme.creator.username
         }
