@@ -6,10 +6,7 @@ import axios from "axios";
 const S3_BUCKET = "memestagram";
 const REGION = "eu-north-1";
 
-AWS.config.update({
-  accessKeyId: "AKIA3WEOS4RPZHNOEYUK",
-  secretAccessKey: "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",
-});
+
 
 const myBucket = new AWS.S3({
   params: { Bucket: S3_BUCKET },
@@ -67,6 +64,7 @@ const UploadImageToS3WithNativeSdk = (props) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+       
       }}
     >
       <input
@@ -77,8 +75,11 @@ const UploadImageToS3WithNativeSdk = (props) => {
         aria-label="File browser example"
         accept="image/*"
         onChange={handleFileInput}
+        
       />
-      <button onClick={() => uploadFile(selectedFile)}>upload</button>
+      <button onClick={() => uploadFile(selectedFile)}style={{backgroundColor: "green"}} >upload</button>
+
+
     </div>
   );
 };

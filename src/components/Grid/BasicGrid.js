@@ -9,6 +9,7 @@ import Header from "../Header/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -100,7 +101,7 @@ export default function BasicGrid(props) {
         <Grid
           item
           sm={12}
-          style={{ display: "flex", justifyContent: "center" }}
+          style={{ display: "flex", justifyContent: "center"}}
         >
           <Footer />
           <div>
