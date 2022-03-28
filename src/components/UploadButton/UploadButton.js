@@ -67,18 +67,28 @@ const UploadImageToS3WithNativeSdk = (props) => {
        
       }}
     >
+      <div className="file-input">
       <input
         type="file"
-        className="inputfile"
+        className="file"
         name="file"
         id="file"
         aria-label="File browser example"
         accept="image/*"
         onChange={handleFileInput}
+        style={{
+  
+
+        }}
         
       />
-      <button onClick={() => uploadFile(selectedFile)}style={{backgroundColor: "green"}} >upload</button>
-
+      <label for="file">Select File</label>
+      </div>
+      <div className="upload-input">
+      <button className="upload" onClick={() => uploadFile(selectedFile)}style={{
+   
+        }}>upload</button>
+      </div>
 
     </div>
   );

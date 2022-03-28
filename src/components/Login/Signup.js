@@ -9,6 +9,7 @@ export default function App() {
   // React States
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState();
+  const [signUp, setSignUp] = useState(true);
 
   const errors = {
     uname: "invalid username",
@@ -47,9 +48,17 @@ export default function App() {
     }
   }, []);
   // JSX code for login form
-  const renderForm = (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
+  const renderSignUpForm = (
+    
+      <form onSubmit={handleSubmit}
+      style ={{
+        width: "400px",
+        height: "500px",
+        backgroundColor:"#EAE7DC",
+        marginTop:"40px",
+        borderRadius: "5px",
+        padding: "0px 20px"
+      }}>
         <div
           className="input-container"
           style={{
@@ -57,10 +66,15 @@ export default function App() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
+
           }}
         >
           <h1>Memestagram</h1>
-          <h3>Sign up to share your favorite memes with your friends.</h3>
+          <h4
+          style={{
+            textAlign: "center", 
+          }}
+          >Sign up to share your favorite memes with your friends.</h4>
           <TextField
             id="outlined-basic-input"
             label="Username"
@@ -68,7 +82,7 @@ export default function App() {
             name="username"
             style={{ marginTop: "10px" }}
           />
-        </div>
+        
         <div className="input-container">
           <TextField
             id="outlined-basic-input"
@@ -89,20 +103,82 @@ export default function App() {
             style={{ marginTop: "10px" }}
           />
         </div>
+        
         <Button
           className="button"
           variant="contained"
           type="submit"
-          style={{ marginTop: "10px" }}
+          style={{ marginTop: "10px",
+          backgroundColor: "#8E8D8A",
+          color:"#EAE7DC"
+         }}
         >
           <span>Sign up</span>
         </Button>
+        
         <p className="forgot-password text-right">
-          Already registered? <a href="#">Sign in</a>
+          Already registered? <Button onClick={()=>{setSignUp(false); console.log(signUp)}}>Sign in</Button>
         </p>
+        </div>
       </form>
-    </div>
+    
   );
+  const renderLoginForm = (
+    
+    <form onSubmit={handleSubmit}
+    style ={{
+      width: "400px",
+      height: "500px",
+      backgroundColor:"#EAE7DC",
+      marginTop:"40px",
+      borderRadius: "5px",
+      padding: "0px 20px"
+    }}>
+      <div
+        className="input-container"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+
+        }}
+      >
+        <h1>Memestagram</h1>
+        <TextField
+          id="outlined-basic-input"
+          label="Username"
+          variant="outlined"
+          name="username"
+          style={{ marginTop: "10px" }}
+        />
+      
+      <div className="input-container">
+        <TextField
+          id="outlined-basic-input"
+          label="Password"
+          variant="outlined"
+          type="password"
+          name="password"
+          style={{ marginTop: "10px" }}
+        />{" "}
+      </div>
+
+      <Button
+        className="button"
+        variant="contained"
+        type="submit"
+        style={{ marginTop: "10px",
+        backgroundColor: "#8E8D8A",
+        color:"#EAE7DC"
+       }}
+      >
+        <span>Log In</span>
+      </Button>
+      </div>
+    </form>
+  
+);
 
   return (
     <div className="app">
@@ -111,9 +187,9 @@ export default function App() {
           <div>
             <BasicGrid user={user.username} />
           </div>
-        ) : (
-          renderForm
-        )}
+        ) : signUp ? renderSignUpForm : renderLoginForm
+        
+        }
       </div>
     </div>
   );

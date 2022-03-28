@@ -78,8 +78,8 @@ export default function App() {
 <<<<<<< HEAD
 =======
         <Button variant="text" type="submit" style={{ marginTop: "10px", backgroundColor: "#8E8D8A", color: "#EAE7DC" }}>
-          Login
-        </Button>
+           Login
+        </Button> 
 
 >>>>>>> 5d7f0938c0c6d37cfb9cf86497aa50279678cedf
         <Button
@@ -91,8 +91,13 @@ export default function App() {
           <span>Login</span>
         </Button>
         <p className="forgot-password text-right">
+<<<<<<< HEAD
           Dont have an account? <a href="#">Sign up</a>
         </p>
+=======
+                   Don't have an account? <a href="#">Sign up</a>
+                </p>
+>>>>>>> master_b
       </form>
     </div>
   );
