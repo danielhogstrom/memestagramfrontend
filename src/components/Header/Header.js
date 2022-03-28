@@ -40,7 +40,7 @@ export default function ElevateAppBar(props) {
       <CssBaseline />
       <ElevationScroll {...props}>
         <AppBar style={{ background: "white", color: "black" }}>
-          <Toolbar style={{ justifyContent: "space-between", backgroundColor: "#1A936F" }}>
+          <Toolbar style={{ justifyContent: "space-between", backgroundColor: "#D8C3A5" }}>
             <Typography variant="h6" component="div">
               Memestagram
             </Typography>
