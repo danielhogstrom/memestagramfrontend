@@ -3,13 +3,12 @@ import axios from "axios";
 import TextField from "@mui/material/TextField";
 import BasicGrid from "../Grid/BasicGrid";
 import Button from "@mui/material/Button";
-import "./Signup.css"
-
+import "./Signup.css";
 
 export default function App() {
   // React States
   const [user, setUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState();
 
   const errors = {
     uname: "invalid username",
@@ -17,6 +16,7 @@ export default function App() {
   };
 
   const handleSubmit = (event) => {
+    console.log(event);
     //Prevent page reload
     event.preventDefault();
     //Create JSON object
@@ -32,6 +32,7 @@ export default function App() {
       .post("http://localhost:8080/api/user/validate", user)
       .then(function (response) {
         setLoggedIn(response.data);
+        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -50,9 +51,8 @@ export default function App() {
             flexDirection: "column",
           }}
         >
-        <h1>Memestagram</h1>
-
-        <h3>Login to share your favorite memes with your friends.</h3>
+          <h1>Memestagram</h1>
+          <h3>Sign up to share your favorite memes with your friends.</h3>
           <TextField
             id="outlined-basic-input"
             label="Username"
@@ -69,26 +69,29 @@ export default function App() {
             type="password"
             name="password"
             style={{ marginTop: "10px" }}
+          />{" "}
+        </div>
+        <div>
+          <TextField
+            id="outlined-basic-input"
+            label="Email"
+            type="email"
+            variant="outlined"
+            name="email"
+            style={{ marginTop: "10px" }}
           />
         </div>
-
-        <Button variant="text" type="submit" style={{ marginTop: "10px", backgroundColor: "#8E8D8A", color: "#EAE7DC" }}>
-          Login
-        </Button>
-
         <Button
-        className="button"
+          className="button"
           variant="contained"
           type="submit"
-          style={{ marginTop: "10px", marginLeft: "57px",  backgroundColor: "#8E8D8A", color: "#EAE7DC"  }}
+          style={{ marginTop: "10px" }}
         >
-          <span>
-           Login
-           </span>
+          <span>Sign up</span>
         </Button>
         <p className="forgot-password text-right">
-                   Dont have an account? <a href="#">Sign up</a>
-                </p>
+          Already registered? <a href="#">Sign in</a>
+        </p>
       </form>
     </div>
   );

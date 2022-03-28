@@ -9,7 +9,6 @@ import Header from "../Header/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -24,8 +23,8 @@ export default function BasicGrid(props) {
   const [user, setUser] = useState({});
   const [sort, setSort] = useState(false);
 
-  const fetchUser = () => {
-    axios
+  const fetchUser = async () => {
+    await axios
       .get(`http://localhost:8080/api/user/${props.user}`, {
         withCredentials: true,
       })
@@ -37,8 +36,8 @@ export default function BasicGrid(props) {
       });
   };
   //Uses axios to fetch data from backend and then setMeme to received array
-  const fetchMeme = () => {
-    axios
+  const fetchMeme = async () => {
+    await axios
       .get("http://localhost:8080/api/meme/all", {
         withCredentials: true,
       })
@@ -50,9 +49,9 @@ export default function BasicGrid(props) {
       });
   };
   //When component is mounted the fetchdata function is run once
-  useEffect(() => {
-    fetchUser();
-    fetchMeme();
+  useEffect(async () => {
+    await fetchUser();
+    await fetchMeme();
   }, [update]);
 
   const sortByLikes = () => {
@@ -101,7 +100,7 @@ export default function BasicGrid(props) {
         <Grid
           item
           sm={12}
-          style={{ display: "flex", justifyContent: "center"}}
+          style={{ display: "flex", justifyContent: "center" }}
         >
           <Footer />
           <div>

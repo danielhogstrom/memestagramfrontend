@@ -1,19 +1,22 @@
 import Login from "./components/Login/Login";
+import SignUp from "./components/Login/Signup";
 
 function App() {
   return (
     <div
-    //full background styling
+      //full background styling
       className="App"
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+
         background: "#EAE7DC"
-      //  background: "linear-gradient(to left top, #0F0E0E, #A5402D)",
+      //  background: "linear-gradient(to left top, #0F0E0E, #A5402D)"
+
       }}
     >
-      <Login />
+      <SignUp />
     </div>
   );
 }
