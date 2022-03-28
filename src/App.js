@@ -1,4 +1,3 @@
-import Login from "./components/Login/Login";
 import SignUp from "./components/Login/Signup";
 
 function App() {
