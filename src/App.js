@@ -6,7 +6,9 @@ function App() {
       //full background styling
       className="App"
       style={{
+        backgroundColor: "#dae0e6",
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         //  background: "linear-gradient(to left top, #0F0E0E, #A5402D)"
@@ -16,5 +18,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

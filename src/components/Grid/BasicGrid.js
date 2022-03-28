@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import MemeCard from "../Card/MemeCard";
-import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -90,7 +89,6 @@ export default function BasicGrid(props) {
                     justifyContent: "center",
                     height: "100%",
                     width: "100%",
-
                   }}
                 >
                   <MemeCard meme={meme} user={user} />
@@ -103,7 +101,6 @@ export default function BasicGrid(props) {
           sm={12}
           style={{ display: "flex", justifyContent: "center" }}
         >
-          <Footer />
           <div>
             <button onClick={sortByLikes}>sort by likes</button>
           </div>
