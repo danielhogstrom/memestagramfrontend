@@ -87,7 +87,7 @@ export default function App() {
            </span>
         </Button>
         <p className="forgot-password text-right">
-                   Dont have an account? <a href="#">Sign up</a>
+                   Don't have an account? <a href="#">Sign up</a>
                 </p>
       </form>
     </div>

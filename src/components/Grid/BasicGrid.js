@@ -90,6 +90,7 @@ export default function BasicGrid(props) {
                     justifyContent: "center",
                     height: "100%",
                     width: "100%",
+
                   }}
                 >
                   <MemeCard meme={meme} user={user} />
