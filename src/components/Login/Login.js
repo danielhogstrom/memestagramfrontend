@@ -67,13 +67,13 @@ export default function App() {
             style={{ marginTop: "10px" }}
           />
         </div>
-        <Button variant="text" type="submit" style={{ marginTop: "10px" }}>
+        <Button variant="text" type="submit" style={{ marginTop: "10px", backgroundColor: "#8E8D8A", color: "#EAE7DC" }}>
           Login
         </Button>
         <Button
           variant="contained"
           type="submit"
-          style={{ marginTop: "10px", marginLeft: "57px" }}
+          style={{ marginTop: "10px", marginLeft: "57px",  backgroundColor: "#8E8D8A", color: "#EAE7DC"  }}
         >
           Sign up
         </Button>
