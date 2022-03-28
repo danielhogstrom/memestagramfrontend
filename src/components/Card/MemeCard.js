@@ -5,12 +5,11 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import AddReactionIcon from "@mui/icons-material/AddReaction";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 const ExpandMore = styled((props) => {
@@ -83,32 +82,30 @@ export default function MemeCard(props) {
       />
 
       <CardContent>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          style={{ fontSize: "large" }}
-        >
-          {props.meme.description}
+        <span>
           <span
             style={{
-              float: "right",
-              fontSize: "x-large",
-              color: "#ff6c4f",
+              float: "left",
+              marginTop: "8px",
             }}
           >
+            <Typography variant="body2" color="text.secondary"></Typography>
+          </span>
+          {props.meme.description}
+          <span style={{ float: "right" }}>
+            <IconButton
+              aria-label="favorite"
+              onClick={addLike}
+              style={{
+                margin: "0",
+              }}
+            >
+              <FavoriteIcon />
+            </IconButton>
             {likes}
           </span>
-        </Typography>
+        </span>
       </CardContent>
-      <CardActions disableSpacing>
-        <IconButton
-          aria-label="add to favorites"
-          onClick={addLike}
-          style={likedIcon}
-        >
-          <AddReactionIcon fontSize="large" />
-        </IconButton>
-      </CardActions>
     </Card>
   );
 }
