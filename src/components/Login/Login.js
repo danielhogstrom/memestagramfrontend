@@ -75,13 +75,6 @@ export default function App() {
           />
         </div>
 
-<<<<<<< HEAD
-=======
-        <Button variant="text" type="submit" style={{ marginTop: "10px", backgroundColor: "#8E8D8A", color: "#EAE7DC" }}>
-           Login
-        </Button> 
-
->>>>>>> 5d7f0938c0c6d37cfb9cf86497aa50279678cedf
         <Button
           className="button"
           variant="contained"
