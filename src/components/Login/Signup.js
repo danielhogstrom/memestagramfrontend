@@ -3,8 +3,7 @@ import axios from "axios";
 import TextField from "@mui/material/TextField";
 import BasicGrid from "../Grid/BasicGrid";
 import Button from "@mui/material/Button";
-import "./Signup.css"
-
+import "./Signup.css";
 
 export default function App() {
   // React States
@@ -39,11 +38,7 @@ export default function App() {
         console.log(error);
       });
   };
-
-  
-
   // JSX code for login form
-  
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
@@ -56,8 +51,8 @@ export default function App() {
             flexDirection: "column",
           }}
         >
-            <h1>Memestagram</h1>
- <h3>Sign up to share your favorite memes with your friends.</h3>
+          <h1>Memestagram</h1>
+          <h3>Sign up to share your favorite memes with your friends.</h3>
           <TextField
             id="outlined-basic-input"
             label="Username"
@@ -73,10 +68,11 @@ export default function App() {
             variant="outlined"
             type="password"
             name="password"
-            style={{ marginTop: "10px"}}
-          /> </div>
-          <div>
-           <TextField
+            style={{ marginTop: "10px" }}
+          />{" "}
+        </div>
+        <div>
+          <TextField
             id="outlined-basic-input"
             label="Email"
             type="email"
@@ -84,23 +80,18 @@ export default function App() {
             name="email"
             style={{ marginTop: "10px" }}
           />
-        
         </div>
-          
         <Button
-        className="button"
+          className="button"
           variant="contained"
           type="submit"
           style={{ marginTop: "10px" }}
-
-        ><span>
-          Sign up
-          </span>
+        >
+          <span>Sign up</span>
         </Button>
         <p className="forgot-password text-right">
-                    Already registered? <a href="#">Sign in</a>
-                </p>
-      
+          Already registered? <a href="#">Sign in</a>
+        </p>
       </form>
     </div>
   );

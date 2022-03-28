@@ -1,61 +1,60 @@
-#outlined-basic-input{
-height: 15px;
-          }
+/* #outlined-basic-input {
+  height: 15px;
+}
 
-h1{
-font-family: Copperplate Gothic Light;
- }
+h1 {
+  font-family: Copperplate Gothic Light;
+}
 
- h3{
-  color:#8E8E8E;
-  }
-      
+h3 {
+  color: #8e8e8e;
+}
 
 body {
- border-style: outset;
- border-width: 4px;
-align-items: center;
-width: 400px;
-height: 500px;
-padding: 20px;
-margin-top: 50px;
-margin-left: 500px;
-text-align: center;
-font-family: American Typewriter, serif;  
-font-size: medium;
-
+  border-style: outset;
+  border-width: 4px;
+  align-items: center;
+  width: 400px;
+  height: 500px;
+  padding: 20px;
+  margin-top: 50px;
+  margin-left: 500px;
+  text-align: center;
+  font-family: American Typewriter, serif;
+  font-size: medium;
 }
 
 .button {
-padding: 10px;
-border: none;
-text-align: center;
-transition: 0.5s;
+  padding: 10px;
+  border: none;
+  text-align: center;
+  transition: 0.5s;
 }
 
 .button span {
-position: relative; 
-transition: 0.5s;
-height: 20px;
-padding-right: 5px;
-padding-left:5px;
+  position: relative;
+  transition: 0.5s;
+  height: 20px;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .button span:after {
-content: '\00bb';
-position:absolute;
-opacity: 0;
-top: 0;
-right: -20px;
-transition: 0.5s;
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
 }
 
 .button:hover span {
-padding-right:7px;
-padding-left: 7px;
+  padding-right: 7px;
+  padding-left: 7px;
 }
 
 .button:hover span:after {
-opacity: 1;
-left:60px;  
+  opacity: 1;
+  left: 60px;
 }
+ */

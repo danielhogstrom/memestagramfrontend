@@ -10,8 +10,6 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddReactionIcon from "@mui/icons-material/AddReaction";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
@@ -58,7 +56,7 @@ export default function MemeCard(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345}}>
+    <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={<Avatar sx={{ bgcolor: red[500] }} aria-label="meme"></Avatar>}
         action={
@@ -71,7 +69,7 @@ export default function MemeCard(props) {
           </IconButton>
         }
         title={
-          props.meme.creator === null || props.meme.creator === undefined
+          props.meme.creator === null
             ? "no creator"
             : props.meme.creator.username
         }
