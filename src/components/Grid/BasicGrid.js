@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import UploadButton from "../UploadButton/UploadButton";
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -22,6 +22,7 @@ export default function BasicGrid(props) {
   const [memes, setMemes] = useState([]);
   const [update, setUpdate] = useState(false);
   const [user, setUser] = useState({});
+  const [sort, setSort] = useState(false);
 
   const fetchUser = () => {
     axios
@@ -29,7 +30,6 @@ export default function BasicGrid(props) {
         withCredentials: true,
       })
       .then((result) => {
-        console.log(result);
         setUser(result.data);
       })
       .catch((error) => {
@@ -55,6 +55,12 @@ export default function BasicGrid(props) {
     fetchMeme();
   }, [update]);
 
+  const sortByLikes = () => {
+    const sortedMemes = memes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+    setMemes(sortedMemes);
+    setSort(true);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -67,7 +73,7 @@ export default function BasicGrid(props) {
         }}
       >
         <Grid item sm={12}>
-          <Header user={props.user} setUpdate={setUpdate} update={update} />
+          <Header user={user} setUpdate={setUpdate} update={update} />
         </Grid>
         {memes
           .slice(0)
@@ -95,9 +101,12 @@ export default function BasicGrid(props) {
         <Grid
           item
           sm={12}
-          style={{ display: "flex", justifyContent: "center" }}
+          style={{ display: "flex", justifyContent: "center"}}
         >
           <Footer />
+          <div>
+            <button onClick={sortByLikes}>sort by likes</button>
+          </div>
         </Grid>
       </Grid>
     </Box>

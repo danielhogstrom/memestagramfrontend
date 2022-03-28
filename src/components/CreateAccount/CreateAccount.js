@@ -3,18 +3,11 @@ import axios from "axios";
 import TextField from "@mui/material/TextField";
 import BasicGrid from "../Grid/BasicGrid";
 import Button from "@mui/material/Button";
-import "./Signup.css"
-
 
 export default function App() {
   // React States
   const [user, setUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password",
-  };
+  const [loggedIn, setLoggedIn] = useState();
 
   const handleSubmit = (event) => {
     //Prevent page reload
@@ -22,14 +15,15 @@ export default function App() {
     //Create JSON object
     const user = {
       username: event.target[0].value,
-      password: event.target[2].value,
+      password: event.target[1].value,
+      email: event.target[2].value,
     };
     setUser(user);
     const instanceOfAxios = axios.create({
       withCredentials: true,
     });
     instanceOfAxios
-      .post("http://localhost:8080/api/user/validate", user)
+      .post("http://localhost:8080/api/user/add", user)
       .then(function (response) {
         setLoggedIn(response.data);
       })
@@ -37,7 +31,7 @@ export default function App() {
         console.log(error);
       });
   };
-  // JSX code for login form
+
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
@@ -48,14 +42,12 @@ export default function App() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
+            marginTop: "200px",
           }}
         >
-        <h1>Memestagram</h1>
-
-        <h3>Login to share your favorite memes with your friends.</h3>
           <TextField
-            id="outlined-basic-input"
-            label="Username"
+            id="outlined-basic-username"
+            label="Choose username"
             variant="outlined"
             name="username"
             style={{ marginTop: "10px" }}
@@ -63,28 +55,38 @@ export default function App() {
         </div>
         <div className="input-container">
           <TextField
-            id="outlined-basic-input"
-            label="Password"
+            id="outlined-basic-password"
+            label="Choose password"
             variant="outlined"
             type="password"
             name="password"
             style={{ marginTop: "10px" }}
           />
         </div>
-          
-        <Button
-        className="button"
-          variant="contained"
-          type="submit"
-          style={{ marginTop: "10px" }}
-        >
-          <span>
-           Login
-           </span>
+        <div className="input-container">
+          <TextField
+            id="outlined-basic-password"
+            label="Enter Email"
+            variant="outlined"
+            type="email"
+            name="email"
+            style={{ marginTop: "10px" }}
+          />
+        </div>
+        <div className="input-container">
+          <TextField
+            id="outlined-basic-password"
+            label="Confirm Email"
+            variant="outlined"
+            type="email"
+            name="email"
+            style={{ marginTop: "10px" }}
+          />
+        </div>
+        <Button variant="outlined" type="submit" style={{ marginTop: "10px" }}>
+          Create Account
         </Button>
-        <p className="forgot-password text-right">
-                   Dont have an account? <a href="#">Sign up</a>
-                </p>
+        <br></br>
       </form>
     </div>
   );
