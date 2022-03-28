@@ -11,6 +11,8 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import axios from "axios";
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -35,12 +37,23 @@ export default function MemeCard(props) {
       setIsLiked(false);
       setIsLikedIcon({ color: "" });
       setLikes(likes - 1);
+      axios.put(`http://localhost:8080/api/meme/${props.meme.id}/${props.meme.likes-1}/${props.user.id}`, {
+        withCredentials: true,
+      })
+      console.log(props)
+      .catch(function (error) {
+        console.log(error);
+      });
     } else {
       setLikes(likes + 1);
-      {
-        setIsLiked(true);
-        setIsLikedIcon({ color: "#ff6c4f" });
-      }
+      setIsLiked(true);
+      setIsLikedIcon({ color: "#ff6c4f" });
+      axios.put(`http://localhost:8080/api/meme/${props.meme.id}/${props.meme.likes+1}/${props.user.id}`, {
+        withCredentials: true,
+      })
+      .catch(function (error) {
+        console.log(error);
+      });      
     }
   };
 
