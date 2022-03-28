@@ -23,8 +23,8 @@ export default function BasicGrid(props) {
   const [user, setUser] = useState({});
   const [sort, setSort] = useState(false);
 
-  const fetchUser = async () => {
-    await axios
+  const fetchUser = () => {
+    axios
       .get(`http://localhost:8080/api/user/${props.user}`, {
         withCredentials: true,
       })
@@ -36,8 +36,8 @@ export default function BasicGrid(props) {
       });
   };
   //Uses axios to fetch data from backend and then setMeme to received array
-  const fetchMeme = async () => {
-    await axios
+  const fetchMeme = () => {
+    axios
       .get("http://localhost:8080/api/meme/all", {
         withCredentials: true,
       })
@@ -49,9 +49,12 @@ export default function BasicGrid(props) {
       });
   };
   //When component is mounted the fetchdata function is run once
-  useEffect(async () => {
-    await fetchUser();
-    await fetchMeme();
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
+    fetchMeme();
   }, [update]);
 
   const sortByLikes = () => {
@@ -74,30 +77,28 @@ export default function BasicGrid(props) {
         <Grid item sm={12}>
           <Header user={user} setUpdate={setUpdate} update={update} />
         </Grid>
-        <Grid items sm={12} style={{ marginTop: "70px" }}>
+        <Grid item sm={12} style={{ marginTop: "70px" }}>
           <Dropdown />
         </Grid>
         {memes
           .slice(0)
           .reverse()
-          .map((meme) => {
+          .map((meme, index) => {
             return (
-              <>
-                <Grid
-                  key={meme.id}
-                  item
-                  sm={6}
-                  md={4}
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    height: "100%",
-                    width: "100%",
-                  }}
-                >
-                  <MemeCard meme={meme} user={user} />
-                </Grid>
-              </>
+              <Grid
+                key={index}
+                item={true}
+                sm={6}
+                md={4}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  height: "100%",
+                  width: "100%",
+                }}
+              >
+                <MemeCard meme={meme} user={user} />
+              </Grid>
             );
           })}
         <Grid

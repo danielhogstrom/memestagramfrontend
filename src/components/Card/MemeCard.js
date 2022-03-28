@@ -52,6 +52,7 @@ export default function MemeCard(props) {
       setIsFollowed(true);
       setFollowedIcon({ color: "#ff6c4f" });
     }
+    console.log(props.meme.creator);
   };
 
   return (
@@ -72,7 +73,6 @@ export default function MemeCard(props) {
             ? "no creator"
             : props.meme.creator.username
         }
-        subheader=""
       />
       <CardMedia
         component="img"

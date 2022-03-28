@@ -17,7 +17,6 @@ export default function App() {
   };
 
   const handleSubmit = (event) => {
-    console.log(event);
     //Prevent page reload
     event.preventDefault();
     //Create JSON object
@@ -34,7 +33,6 @@ export default function App() {
       .then(function (response) {
         setLoggedIn(response.data);
         localStorage.setItem("isLoggedIn", response.data);
-        console.log("local storage: " + localStorage.getItem("isLoggedIn"));
       })
       .catch(function (error) {
         console.log(error);
@@ -88,19 +86,19 @@ export default function App() {
 
         <div className="input-container">
           <TextField
-            color="warning"
             id="outlined-basic-input"
+            color="warning"
             label="Password"
             variant="outlined"
             type="password"
             name="password"
             style={{ marginTop: "10px" }}
-          />{" "}
+          />
         </div>
         <div>
           <TextField
-            color="warning"
             id="outlined-basic-input"
+            color="warning"
             label="Email"
             type="email"
             variant="outlined"
