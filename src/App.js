@@ -1,4 +1,6 @@
 import Login from "./components/Login/Login";
+import SignUp from "./components/Login/Signup";
+
 
 function App() {
   return (
@@ -10,7 +12,10 @@ function App() {
         alignItems: "center",
       }}
     >
-      <Login />
+      
+      <SignUp />
+      
+      
     </div>
   );
 }

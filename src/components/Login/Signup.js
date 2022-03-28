@@ -39,7 +39,11 @@ export default function App() {
         console.log(error);
       });
   };
+
+  
+
   // JSX code for login form
+  
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
@@ -52,9 +56,8 @@ export default function App() {
             flexDirection: "column",
           }}
         >
-        <h1>Memestagram</h1>
-
-        <h3>Login to share your favorite memes with your friends.</h3>
+            <h1>Memestagram</h1>
+ <h3>Sign up to share your favorite memes with your friends.</h3>
           <TextField
             id="outlined-basic-input"
             label="Username"
@@ -70,8 +73,18 @@ export default function App() {
             variant="outlined"
             type="password"
             name="password"
+            style={{ marginTop: "10px"}}
+          /> </div>
+          <div>
+           <TextField
+            id="outlined-basic-input"
+            label="Email"
+            type="email"
+            variant="outlined"
+            name="email"
             style={{ marginTop: "10px" }}
           />
+        
         </div>
           
         <Button
@@ -79,14 +92,15 @@ export default function App() {
           variant="contained"
           type="submit"
           style={{ marginTop: "10px" }}
-        >
-          <span>
-           Login
-           </span>
+
+        ><span>
+          Sign up
+          </span>
         </Button>
         <p className="forgot-password text-right">
-                   Dont have an account? <a href="#">Sign up</a>
+                    Already registered? <a href="#">Sign in</a>
                 </p>
+      
       </form>
     </div>
   );
