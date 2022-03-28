@@ -96,9 +96,7 @@ export default function MemeCard(props) {
             <IconButton
               aria-label="favorite"
               onClick={addLike}
-              style={{
-                margin: "0",
-              }}
+              style={likedIcon}
             >
               <FavoriteIcon />
             </IconButton>

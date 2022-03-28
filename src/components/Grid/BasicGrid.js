@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import MemeCard from "../Card/MemeCard";
 import Header from "../Header/Header";
+import Dropdown from "../Dropdown/Dropdown";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -72,6 +73,9 @@ export default function BasicGrid(props) {
       >
         <Grid item sm={12}>
           <Header user={user} setUpdate={setUpdate} update={update} />
+        </Grid>
+        <Grid items sm={12} style={{ marginTop: "70px" }}>
+          <Dropdown />
         </Grid>
         {memes
           .slice(0)
