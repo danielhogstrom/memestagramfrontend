@@ -6,8 +6,6 @@ import axios from "axios";
 const S3_BUCKET = "memestagram";
 const REGION = "eu-north-1";
 
-
-
 const myBucket = new AWS.S3({
   params: { Bucket: S3_BUCKET },
   region: REGION,
@@ -61,35 +59,32 @@ const UploadImageToS3WithNativeSdk = (props) => {
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-       
       }}
     >
       <div className="file-input">
-      <input
-        type="file"
-        className="file"
-        name="file"
-        id="file"
-        aria-label="File browser example"
-        accept="image/*"
-        onChange={handleFileInput}
-        style={{
-  
-
-        }}
-        
-      />
-      <label for="file">Select File</label>
+        <input
+          type="file"
+          className="file"
+          name="file"
+          id="file"
+          aria-label="File browser example"
+          accept="image/*"
+          onChange={handleFileInput}
+          style={{}}
+        />
+        <label for="file">Select File</label>
       </div>
       <div className="upload-input">
-      <button className="upload" onClick={() => uploadFile(selectedFile)}style={{
-   
-        }}>upload</button>
+        <button
+          className="upload"
+          onClick={() => uploadFile(selectedFile)}
+          style={{}}
+        >
+          upload
+        </button>
       </div>
-
     </div>
   );
 };

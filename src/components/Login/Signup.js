@@ -49,42 +49,46 @@ export default function App() {
   }, []);
   // JSX code for login form
   const renderSignUpForm = (
-    
-      <form onSubmit={handleSubmit}
-      style ={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         width: "400px",
-        height: "500px",
-        backgroundColor:"#EAE7DC",
-        marginTop:"40px",
+        height: "100%",
+        backgroundColor: "#EAE7DC",
+        marginTop: "40px",
         borderRadius: "5px",
-        padding: "0px 20px"
-      }}>
-        <div
-          className="input-container"
+        padding: "20px 20px",
+      }}
+    >
+      <div
+        className="input-container"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <h1>Memestagram</h1>
+        <h4
           style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-
+            textAlign: "center",
           }}
         >
-          <h1>Memestagram</h1>
-          <h4
-          style={{
-            textAlign: "center", 
-          }}
-          >Sign up to share your favorite memes with your friends.</h4>
-          <TextField
-            id="outlined-basic-input"
-            label="Username"
-            variant="outlined"
-            name="username"
-            style={{ marginTop: "10px" }}
-          />
-        
+          Sign up to share your favorite memes with your friends.
+        </h4>
+        <TextField
+          color="warning"
+          id="outlined-basic-input"
+          label="Username"
+          variant="outlined"
+          name="username"
+          style={{ marginTop: "10px" }}
+        />
+
         <div className="input-container">
           <TextField
+            color="warning"
             id="outlined-basic-input"
             label="Password"
             variant="outlined"
@@ -95,6 +99,7 @@ export default function App() {
         </div>
         <div>
           <TextField
+            color="warning"
             id="outlined-basic-input"
             label="Email"
             type="email"
@@ -103,37 +108,46 @@ export default function App() {
             style={{ marginTop: "10px" }}
           />
         </div>
-        
+
         <Button
           className="button"
           variant="contained"
           type="submit"
-          style={{ marginTop: "10px",
-          backgroundColor: "#8E8D8A",
-          color:"#EAE7DC"
-         }}
+          style={{
+            marginTop: "10px",
+            backgroundColor: "#8E8D8A",
+            color: "#EAE7DC",
+          }}
         >
           <span>Sign up</span>
         </Button>
-        
+
         <p className="forgot-password text-right">
-          Already registered? <Button onClick={()=>{setSignUp(false); console.log(signUp)}}>Sign in</Button>
+          Already registered?{" "}
+          <Button
+            onClick={() => {
+              setSignUp(false);
+              console.log(signUp);
+            }}
+          >
+            Sign in
+          </Button>
         </p>
-        </div>
-      </form>
-    
+      </div>
+    </form>
   );
   const renderLoginForm = (
-    
-    <form onSubmit={handleSubmit}
-    style ={{
-      width: "400px",
-      height: "500px",
-      backgroundColor:"#EAE7DC",
-      marginTop:"40px",
-      borderRadius: "5px",
-      padding: "0px 20px"
-    }}>
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        width: "400px",
+        height: "100%",
+        backgroundColor: "#EAE7DC",
+        marginTop: "40px",
+        borderRadius: "5px",
+        padding: "20px 20px",
+      }}
+    >
       <div
         className="input-container"
         style={{
@@ -141,56 +155,57 @@ export default function App() {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-
         }}
       >
         <h1>Memestagram</h1>
         <TextField
+          color="warning"
           id="outlined-basic-input"
           label="Username"
           variant="outlined"
           name="username"
           style={{ marginTop: "10px" }}
         />
-      
-      <div className="input-container">
-        <TextField
-          id="outlined-basic-input"
-          label="Password"
-          variant="outlined"
-          type="password"
-          name="password"
-          style={{ marginTop: "10px" }}
-        />{" "}
-      </div>
 
-      <Button
-        className="button"
-        variant="contained"
-        type="submit"
-        style={{ marginTop: "10px",
-        backgroundColor: "#8E8D8A",
-        color:"#EAE7DC"
-       }}
-      >
-        <span>Log In</span>
-      </Button>
+        <div className="input-container">
+          <TextField
+            color="warning"
+            id="outlined-basic-input"
+            label="Password"
+            variant="outlined"
+            type="password"
+            name="password"
+            style={{ marginTop: "10px" }}
+          />{" "}
+        </div>
+
+        <Button
+          className="button"
+          variant="contained"
+          type="submit"
+          style={{
+            marginTop: "10px",
+            backgroundColor: "#8E8D8A",
+            color: "#EAE7DC",
+          }}
+        >
+          <span>Log In</span>
+        </Button>
       </div>
     </form>
-  
-);
+  );
 
   return (
     <div className="app">
-      <div className="login-form">
-        {loggedIn ? (
-          <div>
-            <BasicGrid user={user.username} />
-          </div>
-        ) : signUp ? renderSignUpForm : renderLoginForm
-        
-        }
-      </div>
+      {loggedIn ? (
+        <div>
+          <BasicGrid user={user.username} />
+        </div>
+      ) : signUp ? (
+        renderSignUpForm
+      ) : (
+        renderLoginForm
+      )}
     </div>
   );
 }
