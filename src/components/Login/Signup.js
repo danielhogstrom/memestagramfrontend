@@ -40,8 +40,16 @@ export default function App() {
   };
   // JSX code for login form
   const renderForm = (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
+    
+      <form onSubmit={handleSubmit}
+      style ={{
+        width: "400px",
+        height: "500px",
+        backgroundColor:"#EAE7DC",
+        marginTop:"40px",
+        borderRadius: "5px",
+        padding: "0px 20px"
+      }}>
         <div
           className="input-container"
           style={{
@@ -49,10 +57,15 @@ export default function App() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
+
           }}
         >
           <h1>Memestagram</h1>
-          <h3>Sign up to share your favorite memes with your friends.</h3>
+          <h4
+          style={{
+            textAlign: "center", 
+          }}
+          >Sign up to share your favorite memes with your friends.</h4>
           <TextField
             id="outlined-basic-input"
             label="Username"
@@ -60,7 +73,7 @@ export default function App() {
             name="username"
             style={{ marginTop: "10px" }}
           />
-        </div>
+        
         <div className="input-container">
           <TextField
             id="outlined-basic-input"
@@ -81,19 +94,24 @@ export default function App() {
             style={{ marginTop: "10px" }}
           />
         </div>
+        
         <Button
           className="button"
           variant="contained"
           type="submit"
-          style={{ marginTop: "10px" }}
+          style={{ marginTop: "10px",
+          backgroundColor: "#8E8D8A",
+          color:"#EAE7DC"
+         }}
         >
           <span>Sign up</span>
         </Button>
         <p className="forgot-password text-right">
           Already registered? <a href="#">Sign in</a>
         </p>
+        </div>
       </form>
-    </div>
+    
   );
 
   return (

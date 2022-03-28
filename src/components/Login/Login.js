@@ -73,8 +73,8 @@ export default function App() {
         </div>
 
         <Button variant="text" type="submit" style={{ marginTop: "10px", backgroundColor: "#8E8D8A", color: "#EAE7DC" }}>
-          Login
-        </Button>
+           Login
+        </Button> 
 
         <Button
         className="button"

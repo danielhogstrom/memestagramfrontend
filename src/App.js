@@ -11,7 +11,7 @@ function App() {
         justifyContent: "center",
         alignItems: "center",
 
-        background: "#EAE7DC"
+        
       //  background: "linear-gradient(to left top, #0F0E0E, #A5402D)"
 
       }}
