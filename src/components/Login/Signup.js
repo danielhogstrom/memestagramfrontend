@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 import BasicGrid from "../Grid/BasicGrid";
@@ -32,12 +32,20 @@ export default function App() {
       .post("http://localhost:8080/api/user/validate", user)
       .then(function (response) {
         setLoggedIn(response.data);
-        console.log(response);
+        localStorage.setItem("isLoggedIn", response.data);
+        console.log("local storage: " + localStorage.getItem("isLoggedIn"));
       })
       .catch(function (error) {
         console.log(error);
       });
   };
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("isLoggedIn");
+    if (loggedInUser) {
+      setLoggedIn(loggedInUser);
+      console.log("useeffect: " + loggedIn);
+    }
+  }, []);
   // JSX code for login form
   const renderForm = (
     <div className="form">
