@@ -25,7 +25,7 @@ h3 {
   padding-left: 5px;
 }
 
-.button span:after {
+/* .button span:after {
   content: "\00bb";
   position: absolute;
   opacity: 0;
@@ -43,7 +43,7 @@ h3 {
   opacity: 1;
   left: 60px;
 }
-
+ */
 h1 {
   color: #ff4411;
   font-family: "Signika", sans-serif;

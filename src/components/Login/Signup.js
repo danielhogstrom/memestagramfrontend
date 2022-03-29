@@ -8,7 +8,7 @@ import "./Signup.css";
 export default function App() {
   // React States
   const [user, setUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState();
+  const [loggedIn, setLoggedIn] = useState(false);
   const [signUp, setSignUp] = useState(true);
 
   const errors = {
@@ -17,6 +17,7 @@ export default function App() {
   };
 
   const handleSubmit = (event) => {
+    console.log(event);
     //Prevent page reload
     event.preventDefault();
     //Create JSON object
@@ -33,6 +34,7 @@ export default function App() {
       .then(function (response) {
         setLoggedIn(response.data);
         localStorage.setItem("isLoggedIn", response.data);
+        console.log("local storage: " + localStorage.getItem("isLoggedIn"));
       })
       .catch(function (error) {
         console.log(error);
@@ -42,9 +44,6 @@ export default function App() {
     const loggedInUser = localStorage.getItem("isLoggedIn");
     console.log("loggedinuser :" + loggedInUser);
     setLoggedIn(loggedInUser);
-    if (loggedInUser == true) {
-      console.log("useeffect: " + loggedIn);
-    }
   }, []);
   // JSX code for login form
   const renderSignUpForm = (
@@ -87,19 +86,19 @@ export default function App() {
 
         <div className="input-container">
           <TextField
-            id="outlined-basic-input"
             color="warning"
+            id="outlined-basic-input"
             label="Password"
             variant="outlined"
             type="password"
             name="password"
             style={{ marginTop: "10px" }}
-          />
+          />{" "}
         </div>
         <div>
           <TextField
-            id="outlined-basic-input"
             color="warning"
+            id="outlined-basic-input"
             label="Email"
             type="email"
             variant="outlined"
@@ -122,11 +121,10 @@ export default function App() {
         </Button>
 
         <p className="forgot-password text-right">
-          Already registered?{" "}
+          Already registered?
           <Button
             onClick={() => {
               setSignUp(false);
-              console.log(signUp);
             }}
           >
             Sign in

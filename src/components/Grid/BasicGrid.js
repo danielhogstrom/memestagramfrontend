@@ -66,7 +66,8 @@ export default function BasicGrid(props) {
   };
   const logOut = () => {
     props.setLoggedIn(false);
-    localStorage.setItem("isLoggedIn", false);
+    localStorage.removeItem("isLoggedIn");
+    /* localStorage.setItem("isLoggedIn", false); */
   };
   const sortByNewest = () => {
     const sortedMemes = memes.sort((a, b) => (a.id > b.id ? -1 : 1));
