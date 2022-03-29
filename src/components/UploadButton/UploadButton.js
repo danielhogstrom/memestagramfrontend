@@ -6,6 +6,11 @@ import axios from "axios";
 const S3_BUCKET = "memestagram";
 const REGION = "eu-north-1";
 
+AWS.config.update({
+  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+});
+
 const myBucket = new AWS.S3({
   params: { Bucket: S3_BUCKET },
   region: REGION,
@@ -20,7 +25,7 @@ const UploadImageToS3WithNativeSdk = (props) => {
     setSelectedFile(e.target.files[0]);
     setMemeObj({
       picurl: `https://memestagram.s3.amazonaws.com/${e.target.files[0].name}`,
-      description: "hej",
+      description: "",
     });
   };
 
@@ -51,7 +56,9 @@ const UploadImageToS3WithNativeSdk = (props) => {
 
   const sendMeme = (meme) => {
     console.log(props.user);
-    axios.post(`http://localhost:8080/api/meme/${props.user.id}/add`, meme);
+    axios
+      .post(`http://localhost:8080/api/meme/${props.user.id}/add`, meme)
+      .then((response) => console.log(response));
   };
 
   return (
@@ -74,7 +81,7 @@ const UploadImageToS3WithNativeSdk = (props) => {
           onChange={handleFileInput}
           style={{}}
         />
-        <label for="file">Select File</label>
+        <label htmlFor="file">Select File</label>
       </div>
       <div className="upload-input">
         <button

@@ -42,8 +42,9 @@ export default function App() {
   };
   useEffect(() => {
     const loggedInUser = localStorage.getItem("isLoggedIn");
-    if (loggedInUser) {
-      setLoggedIn(loggedInUser);
+    console.log("loggedinuser :" + loggedInUser);
+    setLoggedIn(loggedInUser);
+    if (loggedInUser == true) {
       console.log("useeffect: " + loggedIn);
     }
   }, []);
@@ -199,7 +200,7 @@ export default function App() {
     <div className="app">
       {loggedIn ? (
         <div>
-          <BasicGrid user={user.username} />
+          <BasicGrid user={user.username} setLoggedIn={setLoggedIn} />
         </div>
       ) : signUp ? (
         renderSignUpForm
