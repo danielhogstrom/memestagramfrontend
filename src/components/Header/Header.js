@@ -8,6 +8,10 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import UploadButton from "../UploadButton/UploadButton";
+import memestagramlogo from "../Header/logo/memestagramlogo.png";
+import memestagrammini from "../Header/logo/memestagrammini.png";
+
+
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -50,7 +54,14 @@ export default function ElevateAppBar(props) {
             }}
           >
             <Typography variant="h6" component="div">
-              Memestagram
+            <picture>
+              <source srcSet={`${memestagrammini} 1x`} media="(max-width: 500px)" width="50px"/>
+              <img style={{marginTop: "15px"}}
+              className="logotype"
+              srcSet={`${memestagramlogo} 2x`} width="200px"
+              alt="memestagram" />
+              </picture>
+              {/* Memestagram */}
             </Typography>
             <Typography component="div">
               <UploadButton
