@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import BasicGrid from "../Grid/BasicGrid";
 import Button from "@mui/material/Button";
 import "./Signup.css";
+import Logo from "../Header/logo/memestagramlogotransparent.png";
 
 export default function App() {
   // React States
@@ -67,10 +68,11 @@ export default function App() {
           flexDirection: "column",
         }}
       >
-        <h1>Memestagram</h1>
+        <img src={Logo} width="300px" style={{ marginTop: "20px" }} />
         <h4
           style={{
             textAlign: "center",
+            fontSize: "12px",
           }}
         >
           Sign up to share your favorite memes with your friends.
@@ -154,7 +156,11 @@ export default function App() {
           flexDirection: "column",
         }}
       >
-        <h1>Memestagram</h1>
+        <img
+          src={Logo}
+          width="300px"
+          style={{ marginTop: "20px", marginBottom: "31px" }}
+        />
         <TextField
           color="warning"
           id="outlined-basic-input"
@@ -173,7 +179,7 @@ export default function App() {
             type="password"
             name="password"
             style={{ marginTop: "10px" }}
-          />{" "}
+          />
         </div>
 
         <Button
@@ -184,6 +190,8 @@ export default function App() {
             marginTop: "10px",
             backgroundColor: "#8E8D8A",
             color: "#EAE7DC",
+            marginTop: "20px",
+            marginBottom: "31px",
           }}
         >
           <span>Log In</span>
