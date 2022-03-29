@@ -59,8 +59,10 @@ export default function BasicGrid(props) {
 
   const sortByLikes = () => {
     const sortedMemes = memes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
-    setMemes(sortedMemes);
+    setMemes(sortedMemes.reverse());
     setSort(true);
+    console.log(user)
+    console.log(memes)
   };
 
   return (
