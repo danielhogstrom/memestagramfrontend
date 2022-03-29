@@ -61,8 +61,6 @@ export default function BasicGrid(props) {
     const sortedMemes = memes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
     setMemes(sortedMemes.reverse());
     setSort(true);
-    console.log(user);
-    console.log(memes);
   };
   const logOut = () => {
     props.setLoggedIn(false);
@@ -106,6 +104,9 @@ export default function BasicGrid(props) {
           </Button>
           <Button variant="text" onClick={() => logOut()}>
             log out
+          </Button>
+          <Button variant="text" onClick={() => logOut()}>
+            My page
           </Button>
         </Grid>
         {memes
