@@ -10,6 +10,13 @@ import Container from "@mui/material/Container";
 import UploadButton from "../UploadButton/UploadButton";
 import memestagramlogo from "../Header/logo/memestagramlogo.png";
 import memestagrammini from "../Header/logo/memestagrammini.png";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import { Switch } from "@mui/material";
 
 
 
@@ -54,7 +61,7 @@ export default function ElevateAppBar(props) {
             }}
           >
             <Typography variant="h6" component="div">
-            <picture>
+            <picture>            
               <source srcSet={`${memestagrammini} 1x`} media="(max-width: 500px)" width="50px"/>
               <img style={{marginTop: "15px"}}
               className="logotype"
