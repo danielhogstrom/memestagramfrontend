@@ -8,6 +8,8 @@ import Header from "../Header/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
+import { red } from "@mui/material/colors";
+import Avatar from "@mui/material/Avatar";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,7 +17,10 @@ import {
   Link
 } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
-import { Switch } from "@mui/material";
+import { IconButton, Switch } from "@mui/material";
+import "./mypage.css";
+
+
 
 export default function MyPage(props) {
 
@@ -41,8 +46,7 @@ const data = location.state;
 
 
 
-    return (
-        
+    return (        
             <Box sx={{ flexGrow: 1 }}>
               <Grid
                 container
@@ -55,6 +59,33 @@ const data = location.state;
               >
                 <Grid item sm={12}>
                   <Header />
+
+
+
+                  <div className="avatar"
+                  style={{
+                  display: "flex",
+                  }}>
+
+                    <div>
+                    <Avatar className="avatarpic"></Avatar>
+                    </div>
+
+                    <span className="username">
+                      {data.user.username}
+                    </span>
+
+                    <span className="bio">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
+                    accusantium doloremque laudantium, totam rem aperiam.
+                      {data.user.bio}
+                    </span>    
+                  </div>
+                  <div className="following">
+                      Following: 9
+                  </div>
+
+
                 </Grid>
                 <Grid
                   item
@@ -63,7 +94,7 @@ const data = location.state;
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    marginTop: "70px",
+                    marginTop: "10px",
                   }}
                 >                
                  </Grid>
