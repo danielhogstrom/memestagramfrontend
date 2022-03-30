@@ -56,10 +56,7 @@ const UploadImageToS3WithNativeSdk = (props) => {
   };
 
   const sendMeme = (meme) => {
-    console.log(props.user);
-    axios
-      .post(`http://localhost:8080/api/meme/${props.user.id}/add`, meme)
-      .then((response) => console.log(response));
+    axios.post(`http://localhost:8080/api/meme/${props.user.id}/add`, meme);
   };
 
   return (

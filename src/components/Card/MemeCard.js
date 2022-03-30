@@ -44,7 +44,6 @@ export default function MemeCard(props) {
       setIsFollowed(true);
       setFollowedIcon({ color: "#ff6c4f" });
     }
-    console.log(props.meme.creator);
   };
   React.useEffect(() => {
     setNumberOfLikes(props.meme.likes);

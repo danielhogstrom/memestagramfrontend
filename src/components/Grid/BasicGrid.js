@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function BasicGrid(props) {
   const [memes, setMemes] = useState([]);
   const [update, setUpdate] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
   const [sort, setSort] = useState(false);
 
   const myData = {
@@ -32,11 +32,14 @@ export default function BasicGrid(props) {
     memes,
   };
 
-  const fetchUser = () => {
-    axios
-      .get(`http://localhost:8080/api/user/${props.user}`, {
-        withCredentials: true,
-      })
+  const fetchUser = async () => {
+    await axios
+      .get(
+        `http://localhost:8080/api/user/${localStorage.getItem("username")}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => {
         setUser(result.data);
       })
@@ -58,8 +61,8 @@ export default function BasicGrid(props) {
       });
   };
   //When component is mounted the fetchdata function is run once
-  useEffect(() => {
-    fetchUser();
+  useEffect(async () => {
+    await fetchUser();
   }, []);
 
   useEffect(() => {
