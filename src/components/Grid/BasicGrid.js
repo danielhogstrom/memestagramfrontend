@@ -9,12 +9,7 @@ import MyPage from "../MyPage/MyPage";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Switch } from "@mui/material";
 import { getMenuItemUnstyledUtilityClass } from "@mui/base";
 
@@ -34,8 +29,8 @@ export default function BasicGrid(props) {
 
   const myData = {
     user,
-    memes
-  }
+    memes,
+  };
 
   const fetchUser = () => {
     axios
@@ -72,7 +67,7 @@ export default function BasicGrid(props) {
   }, [update]);
 
   const sortByLikes = () => {
-    const sortedMemes = memes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+    let sortedMemes = memes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
     setMemes(sortedMemes.reverse());
     setSort(true);
   };
@@ -82,7 +77,7 @@ export default function BasicGrid(props) {
     /* localStorage.setItem("isLoggedIn", false); */
   };
   const sortByNewest = () => {
-    const sortedMemes = memes.sort((a, b) => (a.id > b.id ? -1 : 1));
+    let sortedMemes = memes.sort((a, b) => (a.id > b.id ? -1 : 1));
     setMemes(sortedMemes.reverse());
     setSort(false);
   };
@@ -118,11 +113,13 @@ export default function BasicGrid(props) {
           </Button>
           <Button variant="text" onClick={() => logOut()}>
             log out
-          </Button>          
-                <Button variant="text">
-                  <Link to="/MyPage" state={myData}>My Page</Link>
-                </Button>                
-                 </Grid>
+          </Button>
+          <Button variant="text">
+            <Link to="/MyPage" state={myData}>
+              My Page
+            </Link>
+          </Button>
+        </Grid>
         {memes
           .slice(0)
           .reverse()
@@ -140,7 +137,12 @@ export default function BasicGrid(props) {
                   height: "100%",
                 }}
               >
-                <MemeCard meme={meme} user={user} />
+                <MemeCard
+                  meme={meme}
+                  user={user}
+                  update={update}
+                  setUpdate={setUpdate}
+                />
               </Grid>
             );
           })}
@@ -153,5 +155,3 @@ export default function BasicGrid(props) {
     </Box>
   );
 }
-
-

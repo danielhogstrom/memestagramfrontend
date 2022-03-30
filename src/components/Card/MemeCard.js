@@ -12,53 +12,29 @@ import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import axios from "axios";
-
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+import { ThemeContext } from "@emotion/react";
 
 export default function MemeCard(props) {
-  const [likes, setLikes] = useState(props.meme.likes);
   const [isLiked, setIsLiked] = useState();
+  const [numberOfLikes, setNumberOfLikes] = useState();
   const [likedIcon, setIsLikedIcon] = useState();
   const [isFollowed, setIsFollowed] = useState();
   const [followedIcon, setFollowedIcon] = useState();
 
   const addLike = () => {
-    if (isLiked) {
-      setIsLiked(false);
-      setIsLikedIcon({ color: "" }); 
-      setLikes(props.meme.likes)     
-      axios
-      .put(`http://localhost:8080/api/meme/${props.meme.id}/${props.meme.likes}`, {
-        withCredentials: true,
-      })      
-      .catch((error) => {
-        console.log(error);
-      });
-      
-    } else {       
-      setIsLiked(true);
-      setIsLikedIcon({ color: "#ff6c4f" });
-      setLikes(props.meme.likes+1)
-      axios
-      .put(`http://localhost:8080/api/meme/${props.meme.id}/${props.meme.likes+1}`, {
-        withCredentials: true,
-      })      
-      .catch((error) => {
-        console.log(error);
-      });
-      
+    setIsLikedIcon({ color: "#ff6c4f" });
+    setIsLiked(true);
+    axios
+      .get(`http://localhost:8080/api/meme/addLike/${props.meme.id}`)
+      .then((response) => setNumberOfLikes(response.data));
   };
-    }
- 
+  const removeLike = () => {
+    setIsLikedIcon({ color: "" });
+    setIsLiked(false);
+    axios
+      .get(`http://localhost:8080/api/meme/removeLike/${props.meme.id}`)
+      .then((response) => setNumberOfLikes(response.data));
+  };
 
   const followButton = () => {
     if (isFollowed) {
@@ -70,7 +46,15 @@ export default function MemeCard(props) {
     }
     console.log(props.meme.creator);
   };
+  React.useEffect(() => {
+    setNumberOfLikes(props.meme.likes);
+  }, []);
 
+  React.useEffect(() => {
+    axios
+      .get(`http://localhost:8080/api/meme/getNumberOfLikes/${props.meme.id}`)
+      .then((response) => setNumberOfLikes(response.data));
+  });
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -111,12 +95,12 @@ export default function MemeCard(props) {
           <span style={{ float: "right" }}>
             <IconButton
               aria-label="favorite"
-              onClick={addLike}
+              onClick={isLiked ? removeLike : addLike}
               style={likedIcon}
             >
               <FavoriteIcon />
             </IconButton>
-            {likes}
+            {numberOfLikes}
           </span>
         </span>
       </CardContent>
