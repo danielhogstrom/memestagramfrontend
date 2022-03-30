@@ -1,9 +1,9 @@
 .avatarwindow {    
     padding-left: 100px;
-    padding-top: 20px;
     padding-bottom: 20px;
     border-bottom: solid;
     border-color: rgb(194, 194, 194);
+
 }
 
 .avatarpic {
@@ -52,7 +52,8 @@
 
      .avatarwindow {
          padding-left: 15px;
-         width: 350px;
+         width: 300px;
+         align-items: left;
          
      }
 
@@ -67,4 +68,5 @@
      .actualpic {
         width: 130px;
     }
+
 }

@@ -30,6 +30,10 @@ const UploadImageToS3WithNativeSdk = (props) => {
     });
   };
 
+  const desciptionInput = () => {
+    
+  }
+
   const uploadFile = (file) => {
     const params = {
       ACL: "public-read",
@@ -80,6 +84,7 @@ const UploadImageToS3WithNativeSdk = (props) => {
           style={{}}
         />
         <label htmlFor="file">Select File</label>
+        <input text className="upload-description" placeholder="Description" onChange={desciptionInput}></input>
       </div>
       <div className="upload-input">
         <button

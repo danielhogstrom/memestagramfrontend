@@ -31,13 +31,13 @@ export default function MyPage(props) {
         container
         spacing={1}
         style={{
+          backgroundColor: "#dae0e6",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Grid item sm={12}>
-          <Header />
+        <Grid item sm={12}>          
         </Grid>
         <Grid
           item
@@ -45,11 +45,9 @@ export default function MyPage(props) {
           style={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
-            marginTop: "70px",
+            alignItems: "center",            
           }}
-        >
-          <Button onClick={handleClick}>Go back</Button>
+        >          
         </Grid>
         <Grid item sm={12}>
           <Header />
@@ -58,6 +56,8 @@ export default function MyPage(props) {
             className="avatarwindow"
             style={{
               display: "flex",
+              backgroundColor: "#ffffff",
+              paddingTop: "20px"
             }}
           >
             <div>
@@ -71,14 +71,14 @@ export default function MyPage(props) {
 
             <span className="username">{data.user.username}</span>
 
-            <span className="bio">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam.
+            <span className="bio">              
               {data.user.bio}
             </span>
+            
           </div>
           <div className="following">Following: 9</div>
         </Grid>
+        <Button onClick={handleClick} className="goback">Go back</Button>
         <Grid
           item
           sm={12}
