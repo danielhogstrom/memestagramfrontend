@@ -25,7 +25,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function MemeCard(props) {
-  const [likes, setLikes] = useState();
+  const [likes, setLikes] = useState(props.meme.likes);
   const [isLiked, setIsLiked] = useState();
   const [likedIcon, setIsLikedIcon] = useState();
   const [isFollowed, setIsFollowed] = useState();
@@ -34,37 +34,31 @@ export default function MemeCard(props) {
   const addLike = () => {
     if (isLiked) {
       setIsLiked(false);
-      setIsLikedIcon({ color: "" });
-      setLikes(likes - 1);
-      axios.put(
-        `http://localhost:8080/api/meme/${props.meme.id}/${
-          props.meme.likes - 1
-        }/${props.user.id}`,
-        {
-          withCredentials: true,
-        }
-      );
-      console.log(props).catch(function (error) {
+      setIsLikedIcon({ color: "" }); 
+      setLikes(props.meme.likes)     
+      axios
+      .put(`http://localhost:8080/api/meme/${props.meme.id}/${props.meme.likes}`, {
+        withCredentials: true,
+      })      
+      .catch((error) => {
         console.log(error);
       });
-    } else {
-      setLikes(likes + 1);
+      
+    } else {       
       setIsLiked(true);
       setIsLikedIcon({ color: "#ff6c4f" });
+      setLikes(props.meme.likes+1)
       axios
-        .put(
-          `http://localhost:8080/api/meme/${props.meme.id}/${
-            props.meme.likes + 1
-          }/${props.user.id}`,
-          {
-            withCredentials: true,
-          }
-        )
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+      .put(`http://localhost:8080/api/meme/${props.meme.id}/${props.meme.likes+1}`, {
+        withCredentials: true,
+      })      
+      .catch((error) => {
+        console.log(error);
+      });
+      
   };
+    }
+ 
 
   const followButton = () => {
     if (isFollowed) {
@@ -122,7 +116,7 @@ export default function MemeCard(props) {
             >
               <FavoriteIcon />
             </IconButton>
-            {props.meme.likes}
+            {likes}
           </span>
         </span>
       </CardContent>

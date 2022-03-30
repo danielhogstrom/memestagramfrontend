@@ -25,7 +25,8 @@ const UploadImageToS3WithNativeSdk = (props) => {
     setSelectedFile(e.target.files[0]);
     setMemeObj({
       picurl: `https://memestagram.s3.amazonaws.com/${e.target.files[0].name}`,
-      description: "",
+      description: "heeej",
+      likes: 0,
     });
   };
 

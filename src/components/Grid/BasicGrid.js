@@ -5,9 +5,17 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import MemeCard from "../Card/MemeCard";
 import Header from "../Header/Header";
+import MyPage from "../MyPage/MyPage";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import { Switch } from "@mui/material";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -104,11 +112,11 @@ export default function BasicGrid(props) {
           </Button>
           <Button variant="text" onClick={() => logOut()}>
             log out
-          </Button>
-          <Button variant="text" onClick={() => logOut()}>
-            My page
-          </Button>
-        </Grid>
+          </Button>          
+                <Button variant="text">
+                  <Link to="/MyPage">My Page</Link>
+                </Button>                
+                 </Grid>
         {memes
           .slice(0)
           .reverse()
@@ -139,3 +147,5 @@ export default function BasicGrid(props) {
     </Box>
   );
 }
+
+
