@@ -77,6 +77,7 @@ export default function BasicGrid(props) {
   const logOut = () => {
     props.setLoggedIn(false);
     localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("username");
     /* localStorage.setItem("isLoggedIn", false); */
   };
   const sortByNewest = () => {
