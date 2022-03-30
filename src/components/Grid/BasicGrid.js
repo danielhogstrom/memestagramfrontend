@@ -16,6 +16,7 @@ import {
   Link
 } from "react-router-dom";
 import { Switch } from "@mui/material";
+import { getMenuItemUnstyledUtilityClass } from "@mui/base";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -30,6 +31,11 @@ export default function BasicGrid(props) {
   const [update, setUpdate] = useState(false);
   const [user, setUser] = useState({});
   const [sort, setSort] = useState(false);
+
+  const myData = {
+    user,
+    memes
+  }
 
   const fetchUser = () => {
     axios
@@ -114,7 +120,7 @@ export default function BasicGrid(props) {
             log out
           </Button>          
                 <Button variant="text">
-                  <Link to="/MyPage">My Page</Link>
+                  <Link to="/MyPage" state={myData}>My Page</Link>
                 </Button>                
                  </Grid>
         {memes
