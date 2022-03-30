@@ -15,8 +15,8 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="mypage" element={<MyPage />} />      
-      </Routes>
-      </BrowserRouter>
+    </Routes>
+    </BrowserRouter>
     
   </React.StrictMode>,
   document.getElementById("root")
