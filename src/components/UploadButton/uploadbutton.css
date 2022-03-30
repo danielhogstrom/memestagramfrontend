@@ -33,3 +33,20 @@
 .upload-input {
   margin-left: 10px;
 }
+
+.upload-description {
+  display: block;
+  position: relative;
+  width: 100px;
+  height: 25px;
+  border-radius: 25px;
+  background: linear-gradient(40deg, #ff4500, #ff5700);
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: small;
+  cursor: text;
+  transition: transform 0.2s ease-out;
+}
