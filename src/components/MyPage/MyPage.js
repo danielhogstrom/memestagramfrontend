@@ -62,13 +62,15 @@ const data = location.state;
 
 
 
-                  <div className="avatar"
+                  <div className="avatarwindow"
                   style={{
                   display: "flex",
                   }}>
 
                     <div>
-                    <Avatar className="avatarpic"></Avatar>
+                    <Avatar className="avatarpic">
+                      <img src="https://images.freeimages.com/images/large-previews/7f0/old-man-1561812.jpg" className="actualpic"></img>
+                    </Avatar>
                     </div>
 
                     <span className="username">

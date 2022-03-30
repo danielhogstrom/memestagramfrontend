@@ -1,4 +1,4 @@
-.avatar {    
+.avatarwindow {    
     padding-left: 100px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -7,9 +7,10 @@
 }
 
 .avatarpic {
-    width: 130px;
-    height: 130px;
+    width: 130px !important;
+    height: 130px !important;
     background-color: rgb(255, 68, 11);
+    object-fit: cover;
 }
 
 .username {
@@ -20,10 +21,10 @@
     align-items: center;
     padding-left: 35px;
     padding-right: 20px;
+    font-weight: 500;
 }
 
-.bio {
-    
+.bio {        
     text-align: center;
     display: flex;
     justify-content: center;
@@ -38,14 +39,18 @@
     padding-bottom: 30px;
 }
 
+.actualpic {
+    width: 220px;
+}
+
 @media screen and (max-width: 600px) {
      .avatarpic {
-        width: 80px;
-        height: 80px;
+        width: 80px !important;
+        height: 80px !important;
 
      }
 
-     .avatar {
+     .avatarwindow {
          padding-left: 15px;
          width: 350px;
          
@@ -58,4 +63,8 @@
      .following {
          padding-left: 10px;
      }
+
+     .actualpic {
+        width: 130px;
+    }
 }
