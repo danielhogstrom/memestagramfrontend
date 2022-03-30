@@ -9,12 +9,7 @@ import MyPage from "../MyPage/MyPage";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Switch } from "@mui/material";
 import { getMenuItemUnstyledUtilityClass } from "@mui/base";
 
@@ -29,19 +24,22 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function BasicGrid(props) {
   const [memes, setMemes] = useState([]);
   const [update, setUpdate] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
   const [sort, setSort] = useState(false);
 
   const myData = {
     user,
-    memes
-  }
+    memes,
+  };
 
-  const fetchUser = () => {
-    axios
-      .get(`http://localhost:8080/api/user/${props.user}`, {
-        withCredentials: true,
-      })
+  const fetchUser = async () => {
+    await axios
+      .get(
+        `http://localhost:8080/api/user/${localStorage.getItem("username")}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => {
         setUser(result.data);
       })
@@ -63,8 +61,8 @@ export default function BasicGrid(props) {
       });
   };
   //When component is mounted the fetchdata function is run once
-  useEffect(() => {
-    fetchUser();
+  useEffect(async () => {
+    await fetchUser();
   }, []);
 
   useEffect(() => {
@@ -72,7 +70,7 @@ export default function BasicGrid(props) {
   }, [update]);
 
   const sortByLikes = () => {
-    const sortedMemes = memes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+    let sortedMemes = memes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
     setMemes(sortedMemes.reverse());
     setSort(true);
   };
@@ -82,7 +80,7 @@ export default function BasicGrid(props) {
     /* localStorage.setItem("isLoggedIn", false); */
   };
   const sortByNewest = () => {
-    const sortedMemes = memes.sort((a, b) => (a.id > b.id ? -1 : 1));
+    let sortedMemes = memes.sort((a, b) => (a.id > b.id ? -1 : 1));
     setMemes(sortedMemes.reverse());
     setSort(false);
   };
@@ -118,11 +116,13 @@ export default function BasicGrid(props) {
           </Button>
           <Button variant="text" onClick={() => logOut()}>
             log out
-          </Button>          
-                <Button variant="text">
-                  <Link to="/MyPage" state={myData}>My Page</Link>
-                </Button>                
-                 </Grid>
+          </Button>
+          <Button variant="text">
+            <Link to="/MyPage" state={myData}>
+              My Page
+            </Link>
+          </Button>
+        </Grid>
         {memes
           .slice(0)
           .reverse()
@@ -140,7 +140,12 @@ export default function BasicGrid(props) {
                   height: "100%",
                 }}
               >
-                <MemeCard meme={meme} user={user} />
+                <MemeCard
+                  meme={meme}
+                  user={user}
+                  update={update}
+                  setUpdate={setUpdate}
+                />
               </Grid>
             );
           })}
@@ -153,5 +158,3 @@ export default function BasicGrid(props) {
     </Box>
   );
 }
-
-
