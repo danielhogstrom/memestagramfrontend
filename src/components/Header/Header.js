@@ -61,7 +61,7 @@ export default function ElevateAppBar(props) {
               srcSet={`${memestagramlogo} 2x`} width="200px"
               alt="memestagram" />
               </picture>
-              {/* Memestagram */}
+              {/* Memestagram */}            
             </Typography>
             <Typography component="div">
               <UploadButton

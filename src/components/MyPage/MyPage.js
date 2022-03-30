@@ -5,16 +5,10 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import MemeCard from "../Card/MemeCard";
 import Header from "../Header/Header";
-import MyPage from "../MyPage/MyPage";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Switch } from "@mui/material";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -59,11 +53,11 @@ export default function BasicGrid(props) {
   //When component is mounted the fetchdata function is run once
   useEffect(() => {
     fetchUser();
+    fetchMeme();
+    setMemes(memes.filter((meme) => meme.creator.id == user.id));
   }, []);
 
-  useEffect(() => {
-    fetchMeme();
-  }, [update]);
+  useEffect(() => {}, [update]);
 
   const sortByLikes = () => {
     const sortedMemes = memes.sort((a, b) => (a.likes > b.likes ? -1 : 1));
@@ -112,11 +106,11 @@ export default function BasicGrid(props) {
           </Button>
           <Button variant="text" onClick={() => logOut()}>
             log out
-          </Button>          
-                <Button variant="text">
-                  <Link to="/MyPage">My Page</Link>
-                </Button>                
-                 </Grid>
+          </Button>
+          <Button variant="text">
+            <Link to="/MyPage">My Page</Link>
+          </Button>
+        </Grid>
         {memes
           .slice(0)
           .reverse()
@@ -147,5 +141,3 @@ export default function BasicGrid(props) {
     </Box>
   );
 }
-
-
