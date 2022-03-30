@@ -37,7 +37,7 @@ export default function MyPage(props) {
         }}
       >
         <Grid item sm={12}>
-          <Header />
+          
         </Grid>
         <Grid
           item
@@ -46,10 +46,10 @@ export default function MyPage(props) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "70px",
+            
           }}
         >
-          <Button onClick={handleClick}>Go back</Button>
+          
         </Grid>
         <Grid item sm={12}>
           <Header />
@@ -79,6 +79,7 @@ export default function MyPage(props) {
           </div>
           <div className="following">Following: 9</div>
         </Grid>
+        <Button onClick={handleClick} className="goback">Go back</Button>
         <Grid
           item
           sm={12}
