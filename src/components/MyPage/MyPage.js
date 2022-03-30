@@ -98,4 +98,4 @@ const data = location.state;
     );
   }
   
->>>>>>> a496e7e8e1cdf466931b57b2efc09bf9358dea80
+
