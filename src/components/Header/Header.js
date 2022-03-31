@@ -1,27 +1,20 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import CssBaseline from "@mui/material/CssBaseline";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import UploadButton from "../UploadButton/UploadButton";
-import memestagramlogo from "../Header/logo/memestagramlogo.png";
-import memestagrammini from "../Header/logo/memestagrammini.png";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
-import { Switch } from "@mui/material";
-
-
+import * as React from "react"
+import PropTypes from "prop-types"
+import AppBar from "@mui/material/AppBar"
+import Toolbar from "@mui/material/Toolbar"
+import Typography from "@mui/material/Typography"
+import CssBaseline from "@mui/material/CssBaseline"
+import useScrollTrigger from "@mui/material/useScrollTrigger"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import UploadButton from "../UploadButton/UploadButton"
+import memestagramlogo from "../Header/logo/memestagramlogo.png"
+import memestagrammini from "../Header/logo/memestagrammini.png"
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import { Switch } from "@mui/material"
 
 function ElevationScroll(props) {
-  const { children, window } = props;
+  const { children, window } = props
   // Note that you normally won't need to set the window ref as useScrollTrigger
   // will default to window.
   // This is only being set here because the demo is in an iframe.
@@ -29,11 +22,11 @@ function ElevationScroll(props) {
     disableHysteresis: true,
     threshold: 0,
     target: window ? window() : undefined,
-  });
+  })
 
   return React.cloneElement(children, {
     elevation: trigger ? 4 : 0,
-  });
+  })
 }
 
 ElevationScroll.propTypes = {
@@ -43,7 +36,7 @@ ElevationScroll.propTypes = {
    * You won't need it on your project.
    */
   window: PropTypes.func,
-};
+}
 
 export default function ElevateAppBar(props) {
   return (
@@ -61,14 +54,23 @@ export default function ElevateAppBar(props) {
             }}
           >
             <Typography variant="h6" component="div">
-            <picture>            
-              <source srcSet={`${memestagrammini} 1x`} media="(max-width: 500px)" width="50px"/>
-              <img style={{marginTop: "15px"}}
-              className="logotype"
-              srcSet={`${memestagramlogo} 2x`} width="200px"
-              alt="memestagram" />
-              </picture>
-              {/* Memestagram */}            
+              <a href="http://localhost:3000/">
+                <picture>
+                  <source
+                    srcSet={`${memestagrammini} 1x`}
+                    media="(max-width: 500px)"
+                    width="50px"
+                  />
+                  <img
+                    style={{ marginTop: "15px" }}
+                    className="logotype"
+                    srcSet={`${memestagramlogo} 2x`}
+                    width="200px"
+                    alt="memestagram"
+                  />
+                </picture>
+              </a>
+              {/* Memestagram */}
             </Typography>
             <Typography component="div">
               <UploadButton
@@ -85,5 +87,5 @@ export default function ElevateAppBar(props) {
         <Box sx={{ my: 2 }}></Box>
       </Container>
     </React.Fragment>
-  );
+  )
 }

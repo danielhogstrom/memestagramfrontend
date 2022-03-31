@@ -1,73 +1,74 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import TextField from "@mui/material/TextField";
-import BasicGrid from "../Grid/BasicGrid";
-import Button from "@mui/material/Button";
-import "./Signup.css";
-import Logo from "../Header/logo/memestagramlogotransparent.png";
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import TextField from "@mui/material/TextField"
+import BasicGrid from "../Grid/BasicGrid"
+import Button from "@mui/material/Button"
+import "./Signup.css"
+import Logo from "../Header/logo/memestagramlogotransparent.png"
 
 export default function App() {
   // React States
-  const [user, setUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [signUp, setSignUp] = useState(true);
-  const [newUser, setNewUser] = useState({});
+  const [user, setUser] = useState({})
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [signUp, setSignUp] = useState(false)
+  const [newUser, setNewUser] = useState({})
 
   const errors = {
     uname: "invalid username",
     pass: "invalid password",
-  };
+  }
 
-  const handleSignUp = (event) => {
+  const handleSignUp = event => {
     //Prevent page reload
-    event.preventDefault();
+    event.preventDefault()
     //Create JSON object
     const newUser = {
       username: event.target[0].value,
       password: event.target[2].value,
       email: event.target[4].value,
-    };
-    console.log(newUser);
-    setNewUser(newUser);
+    }
+    console.log(newUser)
+    setNewUser(newUser)
 
     axios
       .post("http://localhost:8080/api/user/add", newUser)
-      .then((result) => {
-        console.log(result);
+      .then(result => {
+        console.log(result)
       })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+      .catch(error => {
+        console.log(error)
+      })
+    setSignUp(false)
+  }
 
-  const handleSubmit = (event) => {
-    console.log(event);
+  const handleSubmit = event => {
+    console.log(event)
     //Prevent page reload
-    event.preventDefault();
+    event.preventDefault()
     //Create JSON object
     const user = {
       username: event.target[0].value,
       password: event.target[2].value,
-    };
-    setUser(user);
+    }
+    setUser(user)
     const instanceOfAxios = axios.create({
       withCredentials: true,
-    });
+    })
     instanceOfAxios
       .post("http://localhost:8080/api/user/validate", user)
       .then(function (response) {
-        setLoggedIn(response.data);
-        localStorage.setItem("isLoggedIn", response.data);
-        localStorage.setItem("username", user.username);
+        setLoggedIn(response.data)
+        localStorage.setItem("isLoggedIn", response.data)
+        localStorage.setItem("username", user.username)
       })
       .catch(function (error) {
-        console.log(error);
-      });
-  };
+        console.log(error)
+      })
+  }
   useEffect(() => {
-    const loggedInUser = localStorage.getItem("isLoggedIn");
-    setLoggedIn(loggedInUser);
-  }, []);
+    const loggedInUser = localStorage.getItem("isLoggedIn")
+    setLoggedIn(loggedInUser)
+  }, [])
   // JSX code for login form
   const renderSignUpForm = (
     <form
@@ -75,8 +76,8 @@ export default function App() {
       style={{
         width: "400px",
         height: "100%",
-        backgroundColor: "#EAE7DC",
-        marginTop: "40px",
+        backgroundColor: "white",
+        marginTop: "150px",
         borderRadius: "5px",
         padding: "20px 20px",
       }}
@@ -148,23 +149,23 @@ export default function App() {
           Already registered?
           <Button
             onClick={() => {
-              setSignUp(false);
+              setSignUp(false)
             }}
           >
-            Sign in
+            Log in
           </Button>
         </p>
       </div>
     </form>
-  );
+  )
   const renderLoginForm = (
     <form
       onSubmit={handleSubmit}
       style={{
         width: "400px",
         height: "100%",
-        backgroundColor: "#EAE7DC",
-        marginTop: "40px",
+        backgroundColor: "white",
+        marginTop: "150px",
         borderRadius: "5px",
         padding: "20px 20px",
       }}
@@ -222,7 +223,7 @@ export default function App() {
           Do you want to create account?
           <Button
             onClick={() => {
-              setSignUp(true);
+              setSignUp(true)
             }}
           >
             Sign up
@@ -230,7 +231,7 @@ export default function App() {
         </p>
       </div>
     </form>
-  );
+  )
 
   return (
     <div className="app">
@@ -244,5 +245,5 @@ export default function App() {
         renderLoginForm
       )}
     </div>
-  );
+  )
 }
