@@ -26,11 +26,13 @@ export default function BasicGrid(props) {
   const [update, setUpdate] = useState(false);
   const [user, setUser] = useState();
   const [sort, setSort] = useState(false);
+  
 
   const myData = {
     user,
     memes,
   };
+
 
   const fetchUser = async () => {
     await axios
