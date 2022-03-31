@@ -1,0 +1,6 @@
+.smallavatar {
+    width: 50px !important;
+    height: 50px !important;
+    background-color: rgb(255, 68, 11);
+    object-fit: cover;
+}

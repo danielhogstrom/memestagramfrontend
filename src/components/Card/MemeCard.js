@@ -13,6 +13,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import axios from "axios";
 import { ThemeContext } from "@emotion/react";
+import "./memecard.css";
 
 export default function MemeCard(props) {
   const [isLiked, setIsLiked] = useState();
@@ -57,7 +58,12 @@ export default function MemeCard(props) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
-        avatar={<Avatar sx={{ bgcolor: red[500] }} aria-label="meme"></Avatar>}
+        avatar={<Avatar>
+        <img
+          src={props.meme.creator.avatar}
+          className="smallavatar"          
+        ></img>
+      </Avatar>}
         action={
           <IconButton
             aria-label="settings"
