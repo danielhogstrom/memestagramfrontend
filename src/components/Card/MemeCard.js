@@ -58,6 +58,7 @@ export default function MemeCard(props) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
+        className="cardheader"
         avatar={<Avatar>
         <img
           src={props.meme.creator.avatar}
@@ -72,14 +73,19 @@ export default function MemeCard(props) {
           >
             <PersonAddIcon />
           </IconButton>
-        }
-        title={
+        
+        }        
+        titleTypographyProps={{variant:'h6'}}
+        title={          
           props.meme.creator === null
             ? "no creator"
             : props.meme.creator.username
+            
         }
+         
       />
       <CardMedia
+        
         component="img"
         height="auto"
         image={props.meme.picurl}
@@ -96,7 +102,9 @@ export default function MemeCard(props) {
           >
             <Typography variant="body2" color="text.secondary"></Typography>
           </span>
+          <span className="description">
           {props.meme.description}
+          </span>
           <span style={{ float: "right" }}>
             <IconButton
               aria-label="favorite"
