@@ -16,7 +16,6 @@ export default function MyPage(props) {
   const [user, setUser] = useState({});
   const location = useLocation();
   const data = location.state;
-  
 
   function handleClick() {
     window.history.go(-1);
@@ -38,18 +37,16 @@ export default function MyPage(props) {
           alignItems: "center",
         }}
       >
-        <Grid item sm={12}>          
-        </Grid>
+        <Grid item sm={12}></Grid>
         <Grid
           item
           sm={12}
           style={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",            
+            alignItems: "center",
           }}
-        >          
-        </Grid>
+        ></Grid>
         <Grid item sm={12}>
           <Header />
 
@@ -58,28 +55,26 @@ export default function MyPage(props) {
             style={{
               display: "flex",
               backgroundColor: "#ffffff",
-              paddingTop: "20px"
+              paddingTop: "20px",
             }}
           >
             <div>
               <Avatar className="avatarpic">
-                <img
-                  src={data.guestUser.avatar}
-                  className="actualpic"
-                ></img>
+                <img src={data.guestUser.avatar} className="actualpic"></img>
               </Avatar>
             </div>
 
             <span className="username">{data.guestUser.username}</span>
 
-            <span className="bio">              
-              {data.guestUser.bio}
-            </span>
-            
+            <span className="bio">{data.guestUser.bio}</span>
           </div>
-          <div className="following">Following: 9</div>
+          <div className="following">
+            Following: 9<span>Followers: 9</span>
+          </div>
         </Grid>
-        <Button onClick={handleClick} className="goback">Go back</Button>
+        <Button onClick={handleClick} className="goback">
+          Go back
+        </Button>
         <Grid
           item
           sm={12}

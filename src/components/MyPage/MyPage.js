@@ -14,6 +14,8 @@ import "./mypage.css";
 
 export default function MyPage(props) {
   const [user, setUser] = useState({});
+  const [following, setFollowing] = useState();
+  const [followers, setFollowers] = useState();
   const location = useLocation();
   const data = location.state;
 
@@ -22,7 +24,6 @@ export default function MyPage(props) {
   }
   React.useEffect(() => {
     setUser(data.user);
-    console.log(user);
   }, []);
 
   return (
@@ -37,18 +38,16 @@ export default function MyPage(props) {
           alignItems: "center",
         }}
       >
-        <Grid item sm={12}>          
-        </Grid>
+        <Grid item sm={12}></Grid>
         <Grid
           item
           sm={12}
           style={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",            
+            alignItems: "center",
           }}
-        >          
-        </Grid>
+        ></Grid>
         <Grid item sm={12}>
           <Header />
 
@@ -57,28 +56,25 @@ export default function MyPage(props) {
             style={{
               display: "flex",
               backgroundColor: "#ffffff",
-              paddingTop: "20px"
+              paddingTop: "20px",
             }}
           >
             <div>
               <Avatar className="avatarpic">
-                <img
-                  src={data.user.avatar}
-                  className="actualpic"
-                ></img>
+                <img src={data.user.avatar} className="actualpic"></img>
               </Avatar>
             </div>
-
-            <span className="username">{data.user.username}</span>
-
-            <span className="bio">              
-              {data.user.bio}
-            </span>
-            
+            <div>
+              <span className="username">{data.user.username}</span>
+              <div className="following">Following: 9</div>
+              <div className="followers">Followers: 9</div>
+            </div>
+            <span className="bio">{data.user.bio}</span>
           </div>
-          <div className="following">Following: 9</div>
         </Grid>
-        <Button onClick={handleClick} className="goback">Go back</Button>
+        <Button onClick={handleClick} className="goback">
+          Go back
+        </Button>
         <Grid
           item
           sm={12}
