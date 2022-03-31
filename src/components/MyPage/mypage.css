@@ -1,13 +1,13 @@
 .avatarwindow {
-  padding-left: 100px;
+  padding-left: 50px;
   padding-bottom: 20px;
   border-bottom: solid;
   border-color: rgb(194, 194, 194);
 }
 
 .avatarpic {
-  width: 130px !important;
-  height: 130px !important;
+  width: 140px !important;
+  height: 140px !important;
   background-color: rgb(255, 68, 11);
   object-fit: cover;
 }
@@ -28,7 +28,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 20px;
+  padding-left: 60px;
   padding-right: 40px;
 }
 
@@ -46,15 +46,51 @@
   width: 150px;
 }
 
+
+@media screen and (max-width: 800px) {
+    .bio {
+        padding-left: 30px;
+    }
+}
+
+
 @media screen and (max-width: 600px) {
+    .avatarpic {
+      width: 120px !important;
+      height: 120px !important;
+      object-fit: cover;
+    }
+  
+    .avatarwindow {
+      min-width: 500px;
+      align-items: left;
+      max-height: 200px;
+    }
+  
+    .bio {
+      display: none;
+    }
+  
+    .following {
+      padding-left: 10px;
+    }
+  
+    .actualpic {
+      width: 120px;
+    }
+  }
+
+
+
+@media screen and (max-width: 480px) {
   .avatarpic {
-    width: 80px !important;
-    height: 80px !important;
+    width: 120px !important;
+    height: 120px !important;
   }
 
   .avatarwindow {
-    padding-left: 15px;
-    width: 300px;
+    padding-left: 30px;
+    min-width: 360px;
     align-items: left;
   }
 
@@ -67,6 +103,6 @@
   }
 
   .actualpic {
-    width: 85px;
+    width: 120px;
   }
 }

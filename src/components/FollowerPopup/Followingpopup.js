@@ -78,7 +78,7 @@ export default function SimpleDialogDemo(props) {
       <Button
         variant="outlined"
         onClick={handleClickOpen}
-        style={{ minWidth: "140px", marginLeft: "10px", padding: "5px" }}
+        style={{ minWidth: "135px", marginLeft: "15px", padding: "2px" }}
       >
         Following: {props.count}
       </Button>
