@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 import { IconButton, Switch } from "@mui/material";
 import Followingpopup from "../FollowerPopup/Followingpopup";
 import Followerpopup from "../FollowerPopup/Followerpopup";
-import "./userpage.css";
+/* import "./userpage.css"; */
 import axios from "axios";
 
 export default function MyPage(props) {
