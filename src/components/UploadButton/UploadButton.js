@@ -39,8 +39,6 @@ const UploadImageToS3WithNativeSdk = (props) => {
     }
   }, [selectedFile]);
 
-  const descriptionInput = () => {};
-
   const uploadFile = (file) => {
     const params = {
       ACL: "public-read",
@@ -56,6 +54,9 @@ const UploadImageToS3WithNativeSdk = (props) => {
       .send((err) => {
         if (err) console.log(err);
       });
+    setMemeObj({
+      description: input,
+    });
     sendMeme(memeObj);
     //Rerender BasicGrid
     props.setUpdate(() => {
