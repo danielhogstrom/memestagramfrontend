@@ -10,20 +10,37 @@ import Avatar from "@mui/material/Avatar";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { IconButton, Switch } from "@mui/material";
-import "./userpage.css";
+import Followingpopup from "../FollowerPopup/Followingpopup";
+import Followerpopup from "../FollowerPopup/Followerpopup";
+/* import "./userpage.css"; */
+import axios from "axios";
 
 export default function MyPage(props) {
   const [user, setUser] = useState({});
+  const [following, setFollowing] = useState();
+  const [followers, setFollowers] = useState();
   const location = useLocation();
   const data = location.state;
-  
 
   function handleClick() {
     window.history.go(-1);
   }
   React.useEffect(() => {
     setUser(data.user);
-    console.log(user);
+    axios
+      .get(
+        `http://localhost:8080/api/followers/followingcount/${data.guestUser.id}`
+      )
+      .then((response) => {
+        setFollowing(response.data);
+      });
+    axios
+      .get(
+        `http://localhost:8080/api/followers/followcount/${data.guestUser.id}`
+      )
+      .then((response) => {
+        setFollowers(response.data);
+      });
   }, []);
 
   return (
@@ -38,18 +55,16 @@ export default function MyPage(props) {
           alignItems: "center",
         }}
       >
-        <Grid item sm={12}>          
-        </Grid>
+        <Grid item sm={12}></Grid>
         <Grid
           item
           sm={12}
           style={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",            
+            alignItems: "center",
           }}
-        >          
-        </Grid>
+        ></Grid>
         <Grid item sm={12}>
           <Header />
 
@@ -58,28 +73,26 @@ export default function MyPage(props) {
             style={{
               display: "flex",
               backgroundColor: "#ffffff",
-              paddingTop: "20px"
+              paddingTop: "20px",
             }}
           >
             <div>
               <Avatar className="avatarpic">
-                <img
-                  src={data.guestUser.avatar}
-                  className="actualpic"
-                ></img>
+                <img src={data.guestUser.avatar} className="actualpic"></img>
               </Avatar>
             </div>
+            <div>
+              <span className="username">{data.guestUser.username}</span>
+              <Followingpopup userid={data.guestUser.id} count={following} />
+              <Followerpopup userid={data.guestUser.id} count={followers} />
+            </div>
 
-            <span className="username">{data.guestUser.username}</span>
-
-            <span className="bio">              
-              {data.guestUser.bio}
-            </span>
-            
+            <span className="bio">{data.guestUser.bio}</span>
           </div>
-          <div className="following">Following: 9</div>
         </Grid>
-        <Button onClick={handleClick} className="goback">Go back</Button>
+        <Button onClick={handleClick} className="goback">
+          Go back
+        </Button>
         <Grid
           item
           sm={12}

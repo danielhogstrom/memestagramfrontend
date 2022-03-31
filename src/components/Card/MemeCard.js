@@ -35,8 +35,7 @@ export default function MemeCard(props) {
     memes,
     memeCreator,
     guestUser,
-  }
-
+  };
 
   const addLike = () => {
     setIsLikedIcon({ color: "#ff6c4f" });
@@ -72,12 +71,17 @@ export default function MemeCard(props) {
 
   useEffect(() => {
     fetchMeme();
+    setFollowedIcon(
+      props.meme.creator.id == user.id || props.hide
+        ? { display: "none" }
+        : { color: "" }
+    );
   }, []);
 
   const mouseEnterEvent = () => {
     setMemeCreator(props.meme.creator.id);
     setGuestUser(props.meme.creator);
-  }
+  };
 
   const followButton = () => {
     if (isFollowed) {
@@ -101,14 +105,16 @@ export default function MemeCard(props) {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         className="cardheader"
-        avatar={<Avatar onMouseEnter={() => mouseEnterEvent()}>          
-          <Link to="/UserPage" state={myData}> 
-          <img
-          src={props.meme.creator.avatar}
-          className="smallavatar"          
-        ></img>
-        </Link>
-      </Avatar>}
+        avatar={
+          <Avatar onMouseEnter={() => mouseEnterEvent()}>
+            <Link to="/UserPage" state={myData}>
+              <img
+                src={props.meme.creator.avatar}
+                className="smallavatar"
+              ></img>
+            </Link>
+          </Avatar>
+        }
         action={
           <IconButton
             aria-label="settings"
@@ -117,19 +123,15 @@ export default function MemeCard(props) {
           >
             <PersonAddIcon />
           </IconButton>
-        
-        }                
-        titleTypographyProps={{variant:'h6'}}
-        title={ 
-                   
+        }
+        titleTypographyProps={{ variant: "h6" }}
+        title={
           props.meme.creator === null
             ? "no creator"
-            : props.meme.creator.username                                 
+            : props.meme.creator.username
         }
-         
       />
       <CardMedia
-        
         component="img"
         height="auto"
         image={props.meme.picurl}
@@ -146,9 +148,7 @@ export default function MemeCard(props) {
           >
             <Typography variant="body2" color="text.secondary"></Typography>
           </span>
-          <span className="description">
-          {props.meme.description}
-          </span>
+          <span className="description">{props.meme.description}</span>
           <span style={{ float: "right" }}>
             <IconButton
               aria-label="favorite"
