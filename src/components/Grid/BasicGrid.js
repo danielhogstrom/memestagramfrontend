@@ -14,6 +14,8 @@ import Button from "@mui/material/Button"
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { IconButton, Switch } from "@mui/material"
 import { getMenuItemUnstyledUtilityClass } from "@mui/base"
+import { NoEncryption } from "@mui/icons-material"
+import { red } from "@mui/material/colors"
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -108,7 +110,7 @@ export default function BasicGrid(props) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "20px",
+            marginTop: "10px",
             marginBottom: "50px",
           }}
         >
@@ -128,13 +130,13 @@ export default function BasicGrid(props) {
             <Button variant="text" onClick="">
               sort by random
             </Button>
-            <Button variant="text" onClick={() => logOut()}>
-              log out
-            </Button>
-            <Button variant="text">
-              <Link to="/MyPage" state={myData}>
+            <Button variant="contained">
+              <Link to="/MyPage" state={myData} style={{ color: red }}>
                 My Page
               </Link>
+            </Button>
+            <Button variant="contained" onClick={() => logOut()}>
+              log out
             </Button>
           </ButtonGroup>
         </Grid>

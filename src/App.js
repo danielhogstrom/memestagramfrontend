@@ -1,4 +1,4 @@
-import SignUp from "./components/Login/Signup";
+import SignUp from "./components/Login/Signup"
 
 function App() {
   return (
@@ -16,6 +16,6 @@ function App() {
     >
       <SignUp />
     </div>
-  );
+  )
 }
-export default App;
+export default App

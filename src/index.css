@@ -9,3 +9,11 @@ body {
   height: 100vh;
   background-color: #dae0e6;
 }
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+a:link {
+  color: white;
+  text-decoration: none;
+}
