@@ -81,9 +81,6 @@ export default function MyPage(props) {
               <span className="username">{data.user.username}</span>
               <Followingpopup userid={data.user.id} count={following} />
               <Followerpopup userid={data.user.id} count={followers} />
-
-              {/*    <div className="following">Following: {following}</div>
-              <div className="followers">Followers: {followers}</div> */}
             </div>
             <span className="bio">{data.user.bio}</span>
           </div>
@@ -118,7 +115,7 @@ export default function MyPage(props) {
                   height: "100%",
                 }}
               >
-                <MemeCard meme={meme} user={user} />
+                <MemeCard meme={meme} user={user} hide={true} />
               </Grid>
             );
           })}
