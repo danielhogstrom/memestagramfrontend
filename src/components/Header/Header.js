@@ -8,17 +8,11 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import UploadButton from "../UploadButton/UploadButton";
+import MemeModal from "../MemeModal/MemeModal";
 import memestagramlogo from "../Header/logo/memestagramlogo.png";
 import memestagrammini from "../Header/logo/memestagrammini.png";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Switch } from "@mui/material";
-
-
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -61,21 +55,33 @@ export default function ElevateAppBar(props) {
             }}
           >
             <Typography variant="h6" component="div">
-            <picture>            
-              <source srcSet={`${memestagrammini} 1x`} media="(max-width: 500px)" width="50px"/>
-              <img style={{marginTop: "15px"}}
-              className="logotype"
-              srcSet={`${memestagramlogo} 2x`} width="200px"
-              alt="memestagram" />
+              <picture>
+                <source
+                  srcSet={`${memestagrammini} 1x`}
+                  media="(max-width: 500px)"
+                  width="50px"
+                />
+                <img
+                  style={{ marginTop: "15px" }}
+                  className="logotype"
+                  srcSet={`${memestagramlogo} 2x`}
+                  width="200px"
+                  alt="memestagram"
+                />
               </picture>
-              {/* Memestagram */}            
+              {/* Memestagram */}
             </Typography>
             <Typography component="div">
-              <UploadButton
+              <MemeModal
                 user={props.user}
                 setUpdate={props.setUpdate}
                 update={props.update}
               />
+              {/* <UploadButton
+                user={props.user}
+                setUpdate={props.setUpdate}
+                update={props.update}
+              /> */}
             </Typography>
           </Toolbar>
         </AppBar>
