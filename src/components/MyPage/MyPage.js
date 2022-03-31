@@ -63,7 +63,7 @@ export default function MyPage(props) {
             <div>
               <Avatar className="avatarpic">
                 <img
-                  src="https://images.freeimages.com/images/large-previews/7f0/old-man-1561812.jpg"
+                  src={data.user.avatar}
                   className="actualpic"
                 ></img>
               </Avatar>
