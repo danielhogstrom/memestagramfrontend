@@ -10,12 +10,13 @@ import Avatar from "@mui/material/Avatar";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { IconButton, Switch } from "@mui/material";
-import "./mypage.css";
+import "./userpage.css";
 
 export default function MyPage(props) {
   const [user, setUser] = useState({});
   const location = useLocation();
   const data = location.state;
+  
 
   function handleClick() {
     window.history.go(-1);
@@ -63,16 +64,16 @@ export default function MyPage(props) {
             <div>
               <Avatar className="avatarpic">
                 <img
-                  src={data.user.avatar}
+                  src={data.guestUser.avatar}
                   className="actualpic"
                 ></img>
               </Avatar>
             </div>
 
-            <span className="username">{data.user.username}</span>
+            <span className="username">{data.guestUser.username}</span>
 
             <span className="bio">              
-              {data.user.bio}
+              {data.guestUser.bio}
             </span>
             
           </div>
@@ -91,7 +92,7 @@ export default function MyPage(props) {
         ></Grid>
         {data.memes
           .slice(0)
-          .filter((meme) => meme.creator.id == data.user.id)
+          .filter((meme) => meme.creator.id == data.memeCreator)
           .map((meme, index) => {
             return (
               <Grid

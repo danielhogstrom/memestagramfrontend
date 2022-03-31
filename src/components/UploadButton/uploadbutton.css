@@ -14,6 +14,7 @@
   font-size: small;
   cursor: pointer;
   transition: transform 0.2s ease-out;
+  margin-top: 20px;
 }
 
 .file {
@@ -21,6 +22,7 @@
   width: 0.1px;
   height: 0.1px;
   position: absolute;
+  margin-top: 10px;
 }
 .upload {
   border: none;
@@ -31,7 +33,7 @@
 }
 
 .upload-input {
-  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .upload-description {

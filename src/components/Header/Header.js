@@ -8,6 +8,7 @@ import useScrollTrigger from "@mui/material/useScrollTrigger"
 import Box from "@mui/material/Box"
 import Container from "@mui/material/Container"
 import UploadButton from "../UploadButton/UploadButton"
+import MemeModal from "../MemeModal/MemeModal"
 import memestagramlogo from "../Header/logo/memestagramlogo.png"
 import memestagrammini from "../Header/logo/memestagrammini.png"
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
@@ -73,11 +74,16 @@ export default function ElevateAppBar(props) {
               {/* Memestagram */}
             </Typography>
             <Typography component="div">
-              <UploadButton
+              <MemeModal
                 user={props.user}
                 setUpdate={props.setUpdate}
                 update={props.update}
               />
+              {/* <UploadButton
+                user={props.user}
+                setUpdate={props.setUpdate}
+                update={props.update}
+              /> */}
             </Typography>
           </Toolbar>
         </AppBar>
