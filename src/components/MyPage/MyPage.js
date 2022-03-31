@@ -10,7 +10,10 @@ import Avatar from "@mui/material/Avatar";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { IconButton, Switch } from "@mui/material";
+import Followingpopup from "../FollowerPopup/Followingpopup";
+import Followerpopup from "../FollowerPopup/Followerpopup";
 import "./mypage.css";
+import axios from "axios";
 
 export default function MyPage(props) {
   const [user, setUser] = useState({});
@@ -24,6 +27,16 @@ export default function MyPage(props) {
   }
   React.useEffect(() => {
     setUser(data.user);
+    axios
+      .get(`http://localhost:8080/api/followers/followingcount/${data.user.id}`)
+      .then((response) => {
+        setFollowing(response.data);
+      });
+    axios
+      .get(`http://localhost:8080/api/followers/followcount/${data.user.id}`)
+      .then((response) => {
+        setFollowers(response.data);
+      });
   }, []);
 
   return (
@@ -66,8 +79,11 @@ export default function MyPage(props) {
             </div>
             <div>
               <span className="username">{data.user.username}</span>
-              <div className="following">Following: 9</div>
-              <div className="followers">Followers: 9</div>
+              <Followingpopup userid={data.user.id} count={following} />
+              <Followerpopup userid={data.user.id} count={followers} />
+
+              {/*    <div className="following">Following: {following}</div>
+              <div className="followers">Followers: {followers}</div> */}
             </div>
             <span className="bio">{data.user.bio}</span>
           </div>

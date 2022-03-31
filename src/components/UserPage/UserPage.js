@@ -10,10 +10,15 @@ import Avatar from "@mui/material/Avatar";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { IconButton, Switch } from "@mui/material";
+import Followingpopup from "../FollowerPopup/Followingpopup";
+import Followerpopup from "../FollowerPopup/Followerpopup";
 import "./userpage.css";
+import axios from "axios";
 
 export default function MyPage(props) {
   const [user, setUser] = useState({});
+  const [following, setFollowing] = useState();
+  const [followers, setFollowers] = useState();
   const location = useLocation();
   const data = location.state;
 
@@ -22,7 +27,20 @@ export default function MyPage(props) {
   }
   React.useEffect(() => {
     setUser(data.user);
-    console.log(user);
+    axios
+      .get(
+        `http://localhost:8080/api/followers/followingcount/${data.guestUser.id}`
+      )
+      .then((response) => {
+        setFollowing(response.data);
+      });
+    axios
+      .get(
+        `http://localhost:8080/api/followers/followcount/${data.guestUser.id}`
+      )
+      .then((response) => {
+        setFollowers(response.data);
+      });
   }, []);
 
   return (
@@ -63,13 +81,13 @@ export default function MyPage(props) {
                 <img src={data.guestUser.avatar} className="actualpic"></img>
               </Avatar>
             </div>
-
-            <span className="username">{data.guestUser.username}</span>
+            <div>
+              <span className="username">{data.guestUser.username}</span>
+              <Followingpopup userid={data.guestUser.id} count={following} />
+              <Followerpopup userid={data.guestUser.id} count={followers} />
+            </div>
 
             <span className="bio">{data.guestUser.bio}</span>
-          </div>
-          <div className="following">
-            Following: 9<span>Followers: 9</span>
           </div>
         </Grid>
         <Button onClick={handleClick} className="goback">
