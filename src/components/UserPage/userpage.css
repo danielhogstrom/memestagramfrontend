@@ -1,0 +1,72 @@
+.avatarwindow {    
+    padding-left: 100px;
+    padding-bottom: 20px;
+    border-bottom: solid;
+    border-color: rgb(194, 194, 194);
+
+}
+
+.avatarpic {
+    width: 130px !important;
+    height: 130px !important;
+    background-color: rgb(255, 68, 11);
+    object-fit: cover;
+}
+
+.username {
+    font-size: x-large;    
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 35px;
+    padding-right: 20px;
+    font-weight: 500;
+}
+
+.bio {        
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 40px;
+}
+
+.following {
+    padding-left: 121px;
+    margin-top: 20px;
+    padding-bottom: 30px;
+}
+
+.actualpic {
+    width: 150px;
+}
+
+@media screen and (max-width: 600px) {
+     .avatarpic {
+        width: 80px !important;
+        height: 80px !important;
+
+     }
+
+     .avatarwindow {
+         padding-left: 15px;
+         width: 300px;
+         align-items: left;
+         
+     }
+
+     .bio {
+         display: none;
+     }
+
+     .following {
+         padding-left: 10px;
+     }
+
+     .actualpic {
+        width: 85px;
+    }
+
+}

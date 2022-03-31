@@ -14,6 +14,9 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import axios from "axios";
 import { ThemeContext } from "@emotion/react";
 import "./memecard.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function MemeCard(props) {
   const [isLiked, setIsLiked] = useState();
@@ -21,10 +24,27 @@ export default function MemeCard(props) {
   const [likedIcon, setIsLikedIcon] = useState();
   const [isFollowed, setIsFollowed] = useState();
   const [followedIcon, setFollowedIcon] = useState();
+  const [memeCreator, setMemeCreator] = useState();
+  const [guestUser, setGuestUser] = useState({});
+
+  const [user, setUser] = useState(props.user);
+  const [memes, setMemes] = useState([]);
+
+  const myData = {
+    user,
+    memes,
+    memeCreator,
+    guestUser,
+  }
+
 
   const addLike = () => {
     setIsLikedIcon({ color: "#ff6c4f" });
     setIsLiked(true);
+
+    console.log("props");
+    console.log(props.user);
+
     axios
       .get(`http://localhost:8080/api/meme/addLike/${props.meme.id}`)
       .then((response) => setNumberOfLikes(response.data));
@@ -36,6 +56,28 @@ export default function MemeCard(props) {
       .get(`http://localhost:8080/api/meme/removeLike/${props.meme.id}`)
       .then((response) => setNumberOfLikes(response.data));
   };
+
+  const fetchMeme = () => {
+    axios
+      .get("http://localhost:8080/api/meme/all", {
+        withCredentials: true,
+      })
+      .then((result) => {
+        setMemes(result.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    fetchMeme();
+  }, []);
+
+  const mouseEnterEvent = () => {
+    setMemeCreator(props.meme.creator.id);
+    setGuestUser(props.meme.creator);
+  }
 
   const followButton = () => {
     if (isFollowed) {
@@ -59,11 +101,13 @@ export default function MemeCard(props) {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         className="cardheader"
-        avatar={<Avatar>
-        <img
+        avatar={<Avatar onMouseEnter={() => mouseEnterEvent()}>          
+          <Link to="/UserPage" state={myData}> 
+          <img
           src={props.meme.creator.avatar}
           className="smallavatar"          
         ></img>
+        </Link>
       </Avatar>}
         action={
           <IconButton
@@ -74,13 +118,13 @@ export default function MemeCard(props) {
             <PersonAddIcon />
           </IconButton>
         
-        }        
+        }                
         titleTypographyProps={{variant:'h6'}}
-        title={          
+        title={ 
+                   
           props.meme.creator === null
             ? "no creator"
-            : props.meme.creator.username
-            
+            : props.meme.creator.username                                 
         }
          
       />
